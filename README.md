@@ -13,4 +13,4 @@ To install in your personal modules folder (e.g. ~\Documents\WindowsPowerShell\M
 
 Using *PowerShell Humanizer*
 -
-![image](https://raw.github.com/dfinke/PowerShellHumanizer/master/images/TryPowerShellHumanizer.gif)
+![image](https://raw.github.com/dfinke/PowerShellHumanizer/master/Videos/TryPowerShellHumanizer.gif)
