@@ -8,8 +8,9 @@ Install
 -
 To install in your personal modules folder (e.g. ~\Documents\WindowsPowerShell\Modules), run:
 
-
-	iex (new-object System.Net.WebClient).DownloadString('https://raw.github.com/dfinke/PowerShellHumanizer/master/Install.ps1')
+```powershell
+iex (new-object System.Net.WebClient).DownloadString('https://raw.github.com/dfinke/PowerShellHumanizer/master/Install.ps1')
+```
 
 Using PowerShell Humanizer
 -
