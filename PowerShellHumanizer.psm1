@@ -20,14 +20,19 @@ $dll = dir $targetPath -Recurse humanizer.dll
 Add-Type -Path $dll.FullName
 
 function ConvertTo-HumanDate {
-    param([datetime]$Date=(Get-Date))
-
-    [Humanizer.DateHumanizeExtensions]::Humanize( $Date , $false )
+    param(
+        [Parameter(ValueFromPipeline=$true)]
+        [datetime]$Date=(Get-Date)
+    )
+    
+    Process {
+        [Humanizer.DateHumanizeExtensions]::Humanize( $Date , $false )
+    }
 }
 
 function ConvertTo-Singular {
     param(
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         $Word
     )
 
@@ -36,9 +41,20 @@ function ConvertTo-Singular {
     }
 }
 
+function ConvertTo-Plural {
+    param(
+        [Parameter(ValueFromPipeline=$true)]
+        $Word
+    )
+
+    Process {
+        [Humanizer.InflectorExtensions]::Pluralize($word)
+    }
+}
+
 function ConvertTo-Words {
     param(
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         [int]$number
     )
     
@@ -51,7 +67,7 @@ function ConvertTo-Quantity {
     param(
         [string]$string,
 
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         [int]$quantity,
 
         [ValidateSet("None","Numeric","Words")]
@@ -65,7 +81,7 @@ function ConvertTo-Quantity {
 
 function ConvertTo-RomanNumeral {
     param(
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         [int]$Number
     )
     
@@ -76,7 +92,7 @@ function ConvertTo-RomanNumeral {
 
 function ConvertFrom-RomanNumeral {
     param(
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         [string]$RomanNumeral
     )
     
@@ -87,7 +103,7 @@ function ConvertFrom-RomanNumeral {
 
 function ConvertTo-Ordinal {
     param(        
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         [int]$Target
     )
     
@@ -96,9 +112,21 @@ function ConvertTo-Ordinal {
     }
 }
 
+function ConvertTo-OrdinalWords {
+    param(        
+        [Parameter(ValueFromPipeline=$true)]
+        [int]$Target
+    )
+    
+    Process {
+        [Humanizer.NumberToWordsExtension]::ToOrdinalWords($Target)
+    }
+}
+
+
 function ConvertTo-Casing{
     param(        
-        [Parameter(ValueFromPipeline)]
+        [Parameter(ValueFromPipeline=$true)]
         [string]$Target,
         [ValidateSet("Title","AllCaps","LowerCase","Sentence")]
         $Case="Title"
