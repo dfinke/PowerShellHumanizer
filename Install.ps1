@@ -2,7 +2,7 @@ param([string]$InstallDirectory)
 
 $fileList = @(
     'PowerShellHumanizer.psm1',
-    'TryPowerShellHumanizer.ps1',
+    'TryPowerShellHumanizer.ps1'
 )
 
 
