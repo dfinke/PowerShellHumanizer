@@ -19,7 +19,7 @@ if ('' -eq $InstallDirectory)
         Write-Error "$personalModules does not exist"
     }
 
-    $InstallDirectory = Join-Path -Path $personalModules -ChildPath PSharp
+    $InstallDirectory = Join-Path -Path $personalModules -ChildPath PowerShellHumanizer
 }
 
 if (!(Test-Path $InstallDirectory))
