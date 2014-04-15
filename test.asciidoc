@@ -1,1 +1,8 @@
 test
+[source,clojure]
+----
+(require '[clojure.string :as str])
+
+(str/blank? "")
+;; -> true
+----
