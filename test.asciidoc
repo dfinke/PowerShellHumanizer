@@ -6,3 +6,10 @@ test
 (str/blank? "")
 ;; -> true
 ----
+
+[source,powershell]
+----
+function test {
+    "test"
+}
+----
