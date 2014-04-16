@@ -289,5 +289,3 @@ function Register-HumanizerAllTypes
     Register-HumanizerTimeSpan
     Register-HumanizerDateTime
 }
-
-Export-ModuleMember -Function Add-HumanizerLibrary, Register-HumanizerString, Register-HumanizerInteger, Register-HumanizerTimeSpan, Register-HumanizerDateTime, Register-HumanizerAllTypes
