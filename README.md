@@ -127,4 +127,15 @@ now
 PS C:\> $past = Get-Date
 PS C:\> $past.Humanize($false, (get-date))
 13 minutes ago
+
+PS C:\> dir | select @{Label="LastModified";Expression={$_.LastWriteTime.ToUniversalTime().Humanize()}}
+
+LastModified                                                                                                                                                                                                                        
+------------                                                                                                                                                                                                                        
+7 months ago                                                                                                                                                                                                                        
+7 months ago                                                                                                                                                                                                                        
+7 months ago                                                                                                                                                                                                                        
+7 months ago                                                                                                                                                                                                                        
+one year ago                                                                                                                                                                                                                        
+10 months ago              
 ```
