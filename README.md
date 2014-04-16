@@ -99,7 +99,7 @@ PS C:\> Write-Host "Now: $(Get-Date). In three weeks: $((Get-Date) + (3).Weeks)"
 Now: 04/16/2014 09:18:10. In three weeks: 05/07/2014 09:18:10
 ```
 
-## TimeSpan Extension Methods
+### TimeSpan Extension Methods
 ```powershell
 PS C:\> Register-HumanizerTimeSpan
 
