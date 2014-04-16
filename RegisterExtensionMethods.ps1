@@ -36,7 +36,7 @@ function Register-HumanizerString
     [CmdletBinding()]
     Param
     (
-        # TODO: Handle The member is already present
+       
     )
 
     # TODO: Handle 'The member Dehumanize is already present'
@@ -48,37 +48,43 @@ function Register-HumanizerString
                 1 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0]) }
                 2 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0], $args[1]) }
                 default { throw "No overload for ToQuantity takes the specified number of parameters." }
-              }}
+              }} `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "Dehumanize" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName Dehumanize `
-        -value { [Humanizer.StringDehumanizeExtensions]::Dehumanize($this) }
+        -value { [Humanizer.StringDehumanizeExtensions]::Dehumanize($this) } `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "StringHumanizeExtensions" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName Humanize `
-        -value { [Humanizer.StringHumanizeExtensions]::Humanize($this) }      
+        -value { [Humanizer.StringHumanizeExtensions]::Humanize($this) } `
+        -ErrorAction SilentlyContinue
               
     Write-Verbose 'Adding "ToSentenceCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName ToSentenceCase `
-        -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Sentence) }
+        -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Sentence) } `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "ToTitleCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName FromRoman `
-        -value {  [Humanizer.RomanNumeralExtensions]::FromRoman($this, [Humanizer.LetterCasing]::Title) }
+        -value {  [Humanizer.RomanNumeralExtensions]::FromRoman($this, [Humanizer.LetterCasing]::Title) } `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "ToTitleCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName ToTitleCase `
-        -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Title) }
+        -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Title) } `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "Truncator" to [System.String]'
     Update-TypeData -TypeName System.String `
@@ -88,7 +94,8 @@ function Register-HumanizerString
                 1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0]) }
                 2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1]) }
                 default { throw "No overload for Truncate takes the specified number of parameters." }
-              }}
+              }} `
+        -ErrorAction SilentlyContinue
     Update-TypeData -TypeName System.String `
         -MemberType ScriptMethod `
         -MemberName TruncateWords `
@@ -96,7 +103,8 @@ function Register-HumanizerString
                 1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [Humanizer.Truncator]::FixedNumberOfWords) }
                 2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1], [Humanizer.Truncator]::FixedNumberOfWords) }
                 default { throw "No overload for Truncate takes the specified number of parameters." }
-              }}
+              }} `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "OrdinalizeExtensions" to [System.String]'
     Update-TypeData -TypeName System.String `
@@ -106,7 +114,8 @@ function Register-HumanizerString
                 1 { [Humanizer.OrdinalizeExtensions]::Ordinalize($this, $args[0]) }
                 2 { [Humanizer.OrdinalizeExtensions]::Ordinalize($this, $args[0], $args[1]) }
                 default { throw "No overload for Ordinalize takes the specified number of parameters." }
-              }}
+              }} `
+        -ErrorAction SilentlyContinue
 }
 
 <#
@@ -138,13 +147,15 @@ function Register-HumanizerInteger
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Ordinalize `
-        -value { [Humanizer.OrdinalizeExtensions]::Ordinalize($this) }
+        -value { [Humanizer.OrdinalizeExtensions]::Ordinalize($this) } `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "NumberToWordsExtension" to [System.Int32]'
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName ToWords `
-        -value { [Humanizer.NumberToWordsExtension]::ToWords($this) }
+        -value { [Humanizer.NumberToWordsExtension]::ToWords($this) } `
+        -ErrorAction SilentlyContinue
     <# Update-TypeData -TypeName System.Int32 ` # In the source, but not in the binary
         -MemberType ScriptProperty `
         -MemberName ToOrdinalWords `
@@ -155,34 +166,40 @@ function Register-HumanizerInteger
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Weeks `
-        -value { [Humanizer.NumberToTimeSpanExtensions]::Weeks($this) }
+        -value { [Humanizer.NumberToTimeSpanExtensions]::Weeks($this) } `
+        -ErrorAction SilentlyContinue
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Days `
-        -value { [Humanizer.NumberToTimeSpanExtensions]::Days($this) }
+        -value { [Humanizer.NumberToTimeSpanExtensions]::Days($this) } `
+        -ErrorAction SilentlyContinue
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Hours `
-        -value { [Humanizer.NumberToTimeSpanExtensions]::Hours($this) }
+        -value { [Humanizer.NumberToTimeSpanExtensions]::Hours($this) } `
+        -ErrorAction SilentlyContinue
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Minutes `
-        -value { [Humanizer.NumberToTimeSpanExtensions]::Minutes($this) }
+        -value { [Humanizer.NumberToTimeSpanExtensions]::Minutes($this) } `
+        -ErrorAction SilentlyContinue
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Seconds `
-        -value { [Humanizer.NumberToTimeSpanExtensions]::Seconds($this) }
+        -value { [Humanizer.NumberToTimeSpanExtensions]::Seconds($this) } `
+        -ErrorAction SilentlyContinue
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Milliseconds `
-        -value { [Humanizer.NumberToTimeSpanExtensions]::Milliseconds($this) }
+        -value { [Humanizer.NumberToTimeSpanExtensions]::Milliseconds($this) } `
+        -ErrorAction SilentlyContinue
 
     Write-Verbose 'Adding "RomanNumeralExtensions" to [System.Int32]'
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName ToRoman `
-        -value { [Humanizer.RomanNumeralExtensions]::ToRoman($this) }
-
+        -value { [Humanizer.RomanNumeralExtensions]::ToRoman($this) } `
+        -ErrorAction SilentlyContinue
 }
 
 <#
@@ -222,7 +239,8 @@ function Register-HumanizerTimeSpan
                 0 { [Humanizer.TimeSpanHumanizeExtensions]::Humanize($this) }
                 1 { [Humanizer.TimeSpanHumanizeExtensions]::Humanize($this, [int]$args[0]) }
                 default { throw "No overload for Humanize takes the specified number of parameters." }
-              }}
+              }} `
+        -ErrorAction SilentlyContinue
 }
 
 <#
@@ -235,7 +253,7 @@ function Register-HumanizerTimeSpan
     PS C:\> (Get-Date).Humanize()
     4 hours ago
 
-    The default behavio is to compare the input to UTC time.
+    The default behavior is to compare the input to UTC time.
 .EXAMPLE
     PS C:\> (Get-Date).Humanize($false)
     now
@@ -258,6 +276,7 @@ function Register-HumanizerDateTime
     # TODO: Handle The member is already present
 
     Write-Verbose 'Adding "DateHumanizeExtensions" to [System.DateTime]'
+
     Update-TypeData -TypeName System.DateTime `
         -MemberType ScriptMethod `
         -MemberName Humanize `
@@ -266,7 +285,8 @@ function Register-HumanizerDateTime
                 1 { [Humanizer.DateHumanizeExtensions]::Humanize($this, [bool]$args[0]) }
                 2 { [Humanizer.DateHumanizeExtensions]::Humanize($this, [bool]$args[0], [DateTime]$args[1]) }
                 default { throw "No overload for Humanize takes the specified number of parameters." }
-              }}
+                }} `
+        -ErrorAction SilentlyContinue
 }
 
 <#
