@@ -52,7 +52,7 @@ function Register-HumanizerString
     [CmdletBinding()]
     Param
     (
-        [Parameter]
+        [Parameter()]
         [StringExtensions]$Extensions
     )
 
