@@ -58,3 +58,56 @@ hundred and twenty eighth
 hundred and twenty ninth
 hundred and thirtieth
 ```
+
+### String Extension Methods
+```powershell
+PS C:\> Register-HumanizerString
+
+PS C:\> 'then add nodes under it.'.ToTitleCase
+Then Add Nodes Under It.
+
+PS C:\> 'then add nodes under it.'.TruncateWords(3)
+then add nodes…
+
+PS C:\> 'then add nodes under it.'.TruncateCharacters(3)
+th…
+
+PS C:\> 'then add nodes under it.'.TruncateCharacters(7, '-')
+then a-
+
+PS C:\> 'then add nodes under it.'.Dehumanize
+ThenAddNodesUnderIt.
+
+PS C:\> 'string'.ToQuantity(50)
+50 strings
+
+PS C:\> 'string'.ToQuantity(50, "word")
+fifty strings
+```
+
+### Integer Extension Methods
+```powershell
+PS C:\> Register-HumanizerInteger
+
+PS C:\> (3).Ordinalize
+3rd
+
+PS C:\> (3).ToWords
+three
+
+PS C:\> Write-Host "Now: $(Get-Date). In three weeks: $((Get-Date) + (3).Weeks)"
+Now: 04/16/2014 09:18:10. In three weeks: 05/07/2014 09:18:10
+```
+
+### DateTime Extension Methods
+```powershell
+PS C:\> (Get-Date).Humanize()
+4 hours ago
+
+PS C:\> (Get-Date).Humanize($false)
+now
+
+PS C:\> $past = Get-Date
+PS C:\> $past.Humanize($false, (get-date))
+13 minutes ago
+```
