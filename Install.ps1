@@ -13,7 +13,7 @@ $fileList = @(
     'ConvertTo-Singular.ps1',
     'ConvertTo-Words.ps1',
     'RegisterExtensionMethods.ps1',
-    'TryPowerShellHumanizer.ps1
+    'TryPowerShellHumanizer.ps1'
 )
 
 
