@@ -83,6 +83,9 @@ PS C:\> 'string'.ToQuantity(50)
 
 PS C:\> 'string'.ToQuantity(50, "word")
 fifty strings
+
+PS C:\> (Get-Date).Year.ToRoman
+MMXIV
 ```
 
 ### Integer Extension Methods
