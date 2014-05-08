@@ -19,21 +19,6 @@ $dll = dir $targetPath -Recurse humanizer.dll
 
 Add-Type -Path $dll.FullName
 
-Add-Type -TypeDefinition @"
-    [System.Flags]
-    public enum StringExtensions
-    {
-        Quantity = 1,
-        Dehumanize = 2,
-        Humanize = 4,
-        SentenceCase = 8,
-        TitleCase = 16,
-        RomanNumeral = 32,
-        Truncator = 64,
-        Ordinalize = 128
-    }
-"@
-
 
 <#
 .Synopsis
@@ -72,121 +57,74 @@ function Register-HumanizerString
 {
     [CmdletBinding()]
     Param
-    (
-        [Parameter()]
-        [StringExtensions]$Extensions
-    )
+    ()
 
-    if (!$PSBoundParameters["Extensions"])
-    {
-        [StringExtensions]$loadThese = 255
-    }
-    else
-    {
-        $loadThese = $Extensions
-    }
-
-    if ($loadThese -band [StringExtensions]::Quantity)
-    {
-        Write-Verbose 'Adding "ToQuantityExtensions" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptMethod `
-            -MemberName ToQuantity `
-            -value { switch ($args.Count) {
-                    1 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0]) }
-                    2 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0], $args[1]) }
-                    default { throw "No overload for ToQuantity takes the specified number of parameters." }
-                  }} `
-            -ErrorAction SilentlyContinue
-    }
-
-    if ($loadThese -band [StringExtensions]::Dehumanize)
-    {
-        Write-Verbose 'Adding "Dehumanize" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptProperty `
-            -MemberName Dehumanize `
-            -value { [Humanizer.StringDehumanizeExtensions]::Dehumanize($this) } `
-            -ErrorAction SilentlyContinue
-    }
-
-    if ($loadThese -band [StringExtensions]::Humanize)
-    {
-        Write-Verbose 'Adding "StringHumanizeExtensions" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptProperty `
-            -MemberName Humanize `
-            -value { [Humanizer.StringHumanizeExtensions]::Humanize($this) } `
-            -ErrorAction SilentlyContinue
-    }
+    Write-Verbose 'Adding "ToQuantityExtensions" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptMethod `
+        -MemberName ToQuantity `
+        -value { switch ($args.Count) {
+                1 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0]) }
+                2 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0], $args[1]) }
+                default { throw "No overload for ToQuantity takes the specified number of parameters." }
+                }} `
+ 
+    Write-Verbose 'Adding "Dehumanize" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptProperty `
+        -MemberName Dehumanize `
+        -value { [Humanizer.StringDehumanizeExtensions]::Dehumanize($this) } `
+        -ErrorAction SilentlyContinue
     
-    if ($loadThese -band [StringExtensions]::SentenceCase)
-    {
-        Write-Verbose 'Adding "ToSentenceCase" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptProperty `
-            -MemberName ToSentenceCase `
-            -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Sentence) } `
-            -ErrorAction SilentlyContinue
-    }
+    Write-Verbose 'Adding "StringHumanizeExtensions" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptProperty `
+        -MemberName Humanize `
+        -value { [Humanizer.StringHumanizeExtensions]::Humanize($this) } `
+        -ErrorAction SilentlyContinue
+ 
+    Write-Verbose 'Adding "ToSentenceCase" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptProperty `
+        -MemberName ToSentenceCase `
+        -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Sentence) } `
+        -ErrorAction SilentlyContinue
+ 
+    Write-Verbose 'Adding "ToTitleCase" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptProperty `
+        -MemberName ToTitleCase `
+        -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Title) } `
+        -ErrorAction SilentlyContinue
+ 
+    Write-Verbose 'Adding "RomanNumeralExtensions" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptProperty `
+        -MemberName FromRoman `
+        -value {  [Humanizer.RomanNumeralExtensions]::FromRoman($this, [Humanizer.LetterCasing]::Title) } `
+        -ErrorAction SilentlyContinue
+ 
+    Write-Verbose 'Adding "Truncator" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptMethod `
+        -MemberName TruncateCharacters `
+        -value { switch ($args.Count) {
+                1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0]) }
+                2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1]) }
+                default { throw "No overload for Truncate takes the specified number of parameters." }
+                }} `
+        -ErrorAction SilentlyContinue
 
-    if ($loadThese -band [StringExtensions]::TitleCase)
-    {
-        Write-Verbose 'Adding "ToTitleCase" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptProperty `
-            -MemberName ToTitleCase `
-            -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Title) } `
-            -ErrorAction SilentlyContinue
-    }
-
-    if ($loadThese -band [StringExtensions]::RomanNumeral)
-    {
-        Write-Verbose 'Adding "RomanNumeralExtensions" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptProperty `
-            -MemberName FromRoman `
-            -value {  [Humanizer.RomanNumeralExtensions]::FromRoman($this, [Humanizer.LetterCasing]::Title) } `
-            -ErrorAction SilentlyContinue
-    }
-
-    if ($loadThese -band [StringExtensions]::Truncator)
-    {
-        Write-Verbose 'Adding "Truncator" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptMethod `
-            -MemberName TruncateCharacters `
-            -value { switch ($args.Count) {
-                    1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0]) }
-                    2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1]) }
-                    default { throw "No overload for Truncate takes the specified number of parameters." }
-                  }} `
-            -ErrorAction SilentlyContinue
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptMethod `
-            -MemberName TruncateWords `
-            -value { switch ($args.Count) {
-                    1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [Humanizer.Truncator]::FixedNumberOfWords) }
-                    2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1], [Humanizer.Truncator]::FixedNumberOfWords) }
-                    default { throw "No overload for Truncate takes the specified number of parameters." }
-                  }} `
-            -ErrorAction SilentlyContinue
-    }
-
-    if ($loadThese -band [StringExtensions]::Ordinalize)
-    {
-        Write-Verbose 'Adding "OrdinalizeExtensions" to [System.String]'
-        Update-TypeData -TypeName System.String `
-            -MemberType ScriptMethod `
-            -MemberName Ordinalize `
-            -value { switch ($args.Count) {
-                    1 { [Humanizer.OrdinalizeExtensions]::Ordinalize($this, $args[0]) }
-                    2 { [Humanizer.OrdinalizeExtensions]::Ordinalize($this, $args[0], $args[1]) }
-                    default { throw "No overload for Ordinalize takes the specified number of parameters." }
-                  }} `
-            -ErrorAction SilentlyContinue
-    }
-}
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptMethod `
+        -MemberName TruncateWords `
+        -value { switch ($args.Count) {
+                1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [Humanizer.Truncator]::FixedNumberOfWords) }
+                2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1], [Humanizer.Truncator]::FixedNumberOfWords) }
+                default { throw "No overload for Truncate takes the specified number of parameters." }
+                }} `
+        -ErrorAction SilentlyContinue
+ }
 
 <#
 .Synopsis
@@ -207,9 +145,7 @@ function Register-HumanizerInteger
 {
     [CmdletBinding()]
     Param
-    (
-        #TODO: Parameters to enable select Extentions
-    )
+    ()
 
     # TODO: Handle The member is already present
 
@@ -226,10 +162,6 @@ function Register-HumanizerInteger
         -MemberName ToWords `
         -value { [Humanizer.NumberToWordsExtension]::ToWords($this) } `
         -ErrorAction SilentlyContinue
-    <# Update-TypeData -TypeName System.Int32 ` # In the source, but not in the binary
-        -MemberType ScriptProperty `
-        -MemberName ToOrdinalWords `
-        -value { [Humanizer.NumberToWordsExtension]:: } #>
 
 
     Write-Verbose 'Adding "NumberToTimeSpanExtensions" to [System.Int32]'
@@ -295,11 +227,7 @@ function Register-HumanizerTimeSpan
 {
     [CmdletBinding()]
     Param
-    (
-        #TODO: Parameters to enable select Extentions
-    )
-
-    # TODO: Handle The member is already present
+    ()
 
     Write-Verbose 'Adding "TimeSpanHumanizeExtensions" to [System.TimeSpan]'
     Update-TypeData -TypeName System.TimeSpan `
