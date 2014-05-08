@@ -21,13 +21,13 @@ GUID = '6dc9be51-eb93-4355-8648-0c725c0ac988'
 Author = 'Douglas Finke and Chris Hunt'
 
 # Company or vendor of this module
-CompanyName = ''
+CompanyName = 'No Company'
 
 # Copyright statement for this module
-Copyright = '(c) 2014 All rights reserved.'
+Copyright = '© 2014 All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'PowerShell Humanizer wraps Humanizer: meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
