@@ -2,17 +2,7 @@ param([string]$InstallDirectory)
 
 $fileList = @(
     'PowerShellHumanizer.psm1',
-    'ConvertFrom-RomanNumeral.ps1',
-    'ConvertTo-Casing.ps1',
-    'ConvertTo-HumanDate.ps1',
-    'ConvertTo-Ordinal.ps1',
-    'ConvertTo-OrdinalWords.ps1',
-    'ConvertTo-Plural.ps1',
-    'ConvertTo-Quantity.ps1',
-    'ConvertTo-RomanNumeral.ps1',
-    'ConvertTo-Singular.ps1',
-    'ConvertTo-Words.ps1',
-    'RegisterExtensionMethods.ps1',
+    'PowerShellHumanizer.psd1',
     'TryPowerShellHumanizer.ps1'
 )
 
