@@ -29,7 +29,7 @@ if (!(Test-Path $InstallDirectory))
 }
 
 $wc = New-Object System.Net.WebClient
-$wc.Encoding = [System.Text.Encoding]::ASCII
+#$wc.Encoding = [System.Text.Encoding]::ASCII
 $fileList | 
     ForEach-Object {
         $wc.DownloadFile("https://raw.github.com/dfinke/PowerShellHumanizer/master/$_","$installDirectory\$_")
