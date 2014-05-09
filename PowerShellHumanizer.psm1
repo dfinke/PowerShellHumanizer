@@ -68,41 +68,42 @@ function Register-HumanizerString
                 2 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0], $args[1]) }
                 default { throw "No overload for ToQuantity takes the specified number of parameters." }
                 }} `
+        -Force
  
     Write-Verbose 'Adding "Dehumanize" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName Dehumanize `
         -value { [Humanizer.StringDehumanizeExtensions]::Dehumanize($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
     
     Write-Verbose 'Adding "StringHumanizeExtensions" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName Humanize `
         -value { [Humanizer.StringHumanizeExtensions]::Humanize($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
  
     Write-Verbose 'Adding "ToSentenceCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName ToSentenceCase `
         -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Sentence) } `
-        -ErrorAction SilentlyContinue
+        -Force
  
     Write-Verbose 'Adding "ToTitleCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName ToTitleCase `
         -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Title) } `
-        -ErrorAction SilentlyContinue
+        -Force
  
     Write-Verbose 'Adding "RomanNumeralExtensions" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName FromRoman `
         -value {  [Humanizer.RomanNumeralExtensions]::FromRoman($this, [Humanizer.LetterCasing]::Title) } `
-        -ErrorAction SilentlyContinue
+        -Force
  
     Write-Verbose 'Adding "Truncator" to [System.String]'
     Update-TypeData -TypeName System.String `
@@ -113,7 +114,7 @@ function Register-HumanizerString
                 2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1]) }
                 default { throw "No overload for Truncate takes the specified number of parameters." }
                 }} `
-        -ErrorAction SilentlyContinue
+        -Force
 
     Update-TypeData -TypeName System.String `
         -MemberType ScriptMethod `
@@ -123,7 +124,7 @@ function Register-HumanizerString
                 2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1], [Humanizer.Truncator]::FixedNumberOfWords) }
                 default { throw "No overload for Truncate takes the specified number of parameters." }
                 }} `
-        -ErrorAction SilentlyContinue
+        -Force
  }
 
 <#
@@ -154,14 +155,14 @@ function Register-HumanizerInteger
         -MemberType ScriptProperty `
         -MemberName Ordinalize `
         -value { [Humanizer.OrdinalizeExtensions]::Ordinalize($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
 
     Write-Verbose 'Adding "NumberToWordsExtension" to [System.Int32]'
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName ToWords `
         -value { [Humanizer.NumberToWordsExtension]::ToWords($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
 
 
     Write-Verbose 'Adding "NumberToTimeSpanExtensions" to [System.Int32]'
@@ -169,39 +170,39 @@ function Register-HumanizerInteger
         -MemberType ScriptProperty `
         -MemberName Weeks `
         -value { [Humanizer.NumberToTimeSpanExtensions]::Weeks($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Days `
         -value { [Humanizer.NumberToTimeSpanExtensions]::Days($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Hours `
         -value { [Humanizer.NumberToTimeSpanExtensions]::Hours($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Minutes `
         -value { [Humanizer.NumberToTimeSpanExtensions]::Minutes($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Seconds `
         -value { [Humanizer.NumberToTimeSpanExtensions]::Seconds($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName Milliseconds `
         -value { [Humanizer.NumberToTimeSpanExtensions]::Milliseconds($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
 
     Write-Verbose 'Adding "RomanNumeralExtensions" to [System.Int32]'
     Update-TypeData -TypeName System.Int32 `
         -MemberType ScriptProperty `
         -MemberName ToRoman `
         -value { [Humanizer.RomanNumeralExtensions]::ToRoman($this) } `
-        -ErrorAction SilentlyContinue
+        -Force
 }
 
 <#
@@ -238,7 +239,7 @@ function Register-HumanizerTimeSpan
                 1 { [Humanizer.TimeSpanHumanizeExtensions]::Humanize($this, [int]$args[0]) }
                 default { throw "No overload for Humanize takes the specified number of parameters." }
               }} `
-        -ErrorAction SilentlyContinue
+        -Force
 }
 
 <#
@@ -284,7 +285,7 @@ function Register-HumanizerDateTime
                 2 { [Humanizer.DateHumanizeExtensions]::Humanize($this, [bool]$args[0], [DateTime]$args[1]) }
                 default { throw "No overload for Humanize takes the specified number of parameters." }
                 }} `
-        -ErrorAction SilentlyContinue
+        -Force
 }
 
 <#
