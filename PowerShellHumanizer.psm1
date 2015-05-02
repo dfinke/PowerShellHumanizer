@@ -3,19 +3,10 @@ $targetPath = $PSScriptRoot
 $dll = dir $targetPath -Recurse humanizer.dll
 
 if(!$dll) {
-    
-    if(!(Get-Command nuget -ErrorAction SilentlyContinue)) {
-        Write-Host -ForegroundColor Red "Please install nuget http://www.nuget.org/"
-        return
-    }
 
-    pushd
-    cd $targetPath
-    nuget install humanizer
-    popd
+    Write-Error "Humanizer.dll is missing. Please reinstall the PowerShellHumanizer module."
+    return
 }
-
-$dll = dir $targetPath -Recurse humanizer.dll
 
 Add-Type -Path $dll.FullName
 
