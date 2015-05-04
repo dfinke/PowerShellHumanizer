@@ -1,15 +1,4 @@
-$targetPath = $PSScriptRoot
-
-$dll = dir $targetPath -Recurse humanizer.dll
-
-if(!$dll) {
-
-    Write-Error "Humanizer.dll is missing. Please reinstall the PowerShellHumanizer module."
-    return
-}
-
-Add-Type -Path $dll.FullName
-
+Add-Type -Path "$PSScriptRoot\humanizer.dll"
 
 <#
 .Synopsis
