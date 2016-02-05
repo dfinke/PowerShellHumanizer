@@ -66,6 +66,9 @@ PS C:\> Register-HumanizerString
 PS C:\> 'then add nodes under it.'.ToTitleCase
 Then Add Nodes Under It.
 
+PS C:\> 'FromTitleCase'.Underscore
+from_title_case
+
 PS C:\> 'then add nodes under it.'.TruncateWords(3)
 then add nodes…
 
