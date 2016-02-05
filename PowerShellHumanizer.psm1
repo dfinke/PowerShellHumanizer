@@ -70,6 +70,13 @@ function Register-HumanizerString
         -MemberName ToSentenceCase `
         -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Sentence) } `
         -Force
+
+    Write-Verbose 'Adding "Underscore" to [System.String]'
+    Update-TypeData -TypeName System.String `
+        -MemberType ScriptProperty `
+        -MemberName Underscore `
+        -value {  [Humanizer.InflectorExtensions]::Underscore($this) } `
+        -Force
  
     Write-Verbose 'Adding "ToTitleCase" to [System.String]'
     Update-TypeData -TypeName System.String `
