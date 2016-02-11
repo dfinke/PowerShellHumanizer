@@ -40,6 +40,13 @@ indicy
 ox
 knife
 ```
+
+### Hyphenate
+```powershell
+PS C:\> "Continuing To Make Powershell A Bit More Human" | ConvertTo-HyphonatedString
+continuing-to-make-powershell-a-bit-more-human
+```
+
 ### Number to ordinal words
 ```powershell
 PS C:\> ConvertTo-OrdinalWords 121
