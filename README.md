@@ -145,3 +145,36 @@ LastModified
 one year ago                                                                                                                                                                                                                        
 10 months ago              
 ```
+
+### Custom Type Formats
+
+```
+PS C:\> measure-command { 1..15000000}
+
+2 seconds, 981 milliseconds
+
+PS C:\> (get-date) - (get-date "1/1/2015")
+
+57 weeks, 6 days, 20 hours
+
+PS C:\> $output = (get-date "1/1/2015") - (get-date) 
+
+PS C:\> $output
+
+no time
+
+PS C:\> $output | fl
+
+
+Days              : -405
+Hours             : -20
+Minutes           : -50
+Seconds           : -23
+Milliseconds      : -356
+Ticks             : -350670233562167
+TotalDays         : -405.868325882138
+TotalHours        : -9740.8398211713
+TotalMinutes      : -584450.389270278
+TotalSeconds      : -35067023.3562167
+TotalMilliseconds : -35067023356.2167
+```
