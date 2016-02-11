@@ -153,9 +153,8 @@ one year ago
 10 months ago              
 ```
 
-### Custom Type Formats
-
-```
+### Custom TimeSpane Formats
+```powershell
 PS C:\> measure-command { 1..15000000}
 
 2 seconds, 981 milliseconds
@@ -184,4 +183,30 @@ TotalHours        : -9740.8398211713
 TotalMinutes      : -584450.389270278
 TotalSeconds      : -35067023.3562167
 TotalMilliseconds : -35067023356.2167
+```
+
+### Custom FileSystem Table Format
+```powershell
+PS C:\> Get-ChildItem
+
+
+    Directory: C:\Program Files\7-Zip
+
+
+Mode     LastWritten         Length Name
+----     -----------         ------ ----
+da----   9 months ago               Lang
+-a----   one year ago         93 KB 7-zip.chm
+-a----   one year ago         79 KB 7-zip.dll
+-a----   one year ago         49 KB 7-zip32.dll
+-a----   one year ago          1 MB 7z.dll
+-a----   one year ago        414 KB 7z.exe
+-a----   one year ago        178 KB 7z.sfx
+-a----   one year ago        163 KB 7zCon.sfx
+-a----   one year ago        784 KB 7zFM.exe
+-a----   one year ago        533 KB 7zG.exe
+-a----   4 years ago          366 B descript.ion
+-a----   one year ago         40 KB History.txt
+-a----   one year ago          2 KB License.txt
+-a----   one year ago          2 KB readme.txt
 ```
