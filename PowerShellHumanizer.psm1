@@ -1,5 +1,8 @@
 Add-Type -Path "$PSScriptRoot\humanizer.dll"
 
+# Must call Update-FormatData with -PrepentPath to override built-in defined formats
+Update-FormatData -PrependPath "$PSScriptRoot\TimeSpan.format.ps1xml"
+
 <#
 .Synopsis
    Add Humanizer extension methods to System.String
