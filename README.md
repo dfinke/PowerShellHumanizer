@@ -43,7 +43,7 @@ knife
 
 ### Hyphenate
 ```powershell
-PS C:\> "Continuing To Make Powershell A Bit More Human" | ConvertTo-HyphonatedString
+PS C:\> "Continuing To Make Powershell A Bit More Human" | ConvertTo-HyphenatedString
 continuing-to-make-powershell-a-bit-more-human
 ```
 

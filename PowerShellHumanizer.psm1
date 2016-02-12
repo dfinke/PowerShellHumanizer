@@ -8,7 +8,7 @@ Update-FormatData -PrependPath "$PSScriptRoot\FileInfo.format.ps1xml"
 .Synopsis
    Add Humanizer extension methods to System.String
 .DESCRIPTION
-   Add numerous ScriptMethod and ScriptProperty members to System.String to 
+   Add numerous ScriptMethod and ScriptProperty members to System.String to
    provide access to Humanizer string transform functionality.
 .EXAMPLE
     PS C:\> Register-HumanizerString
@@ -53,21 +53,21 @@ function Register-HumanizerString
                 default { throw "No overload for ToQuantity takes the specified number of parameters." }
                 }} `
         -Force
- 
+
     Write-Verbose 'Adding "Dehumanize" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName Dehumanize `
         -value { [Humanizer.StringDehumanizeExtensions]::Dehumanize($this) } `
         -Force
-    
+
     Write-Verbose 'Adding "StringHumanizeExtensions" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName Humanize `
         -value { [Humanizer.StringHumanizeExtensions]::Humanize($this) } `
         -Force
- 
+
     Write-Verbose 'Adding "ToSentenceCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
@@ -81,21 +81,21 @@ function Register-HumanizerString
         -MemberName Underscore `
         -value {  [Humanizer.InflectorExtensions]::Underscore($this) } `
         -Force
- 
+
     Write-Verbose 'Adding "ToTitleCase" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName ToTitleCase `
         -value {  [Humanizer.CasingExtensions]::ApplyCase($this, [Humanizer.LetterCasing]::Title) } `
         -Force
- 
+
     Write-Verbose 'Adding "RomanNumeralExtensions" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptProperty `
         -MemberName FromRoman `
         -value {  [Humanizer.RomanNumeralExtensions]::FromRoman($this, [Humanizer.LetterCasing]::Title) } `
         -Force
- 
+
     Write-Verbose 'Adding "Truncator" to [System.String]'
     Update-TypeData -TypeName System.String `
         -MemberType ScriptMethod `
@@ -122,7 +122,7 @@ function Register-HumanizerString
 .Synopsis
    Add Humanizer extension methods to System.Int32
 .DESCRIPTION
-   Add numerous ScriptMethod and ScriptProperty members to System.Int32 to 
+   Add numerous ScriptMethod and ScriptProperty members to System.Int32 to
    provide access to Humanizer number to string transform functionality.
 .EXAMPLE
     PS C:\> Register-HumanizerInteger
@@ -200,11 +200,11 @@ function Register-HumanizerInteger
 .Synopsis
    Add Humanizer extension methods to System.TimeSpan
 .DESCRIPTION
-   Adds ScriptMethod members to System.TimeSpan to 
+   Adds ScriptMethod members to System.TimeSpan to
    provide access to Humanizer TimeSpan to string transform functionality.
 .EXAMPLE
     PS C:\> $past = get-date
-    
+
     PS C:\> ((get-date)-$past).Humanize()
     1 minute
 
@@ -237,7 +237,7 @@ function Register-HumanizerTimeSpan
 .Synopsis
    Add Humanizer extension methods to System.DateTime
 .DESCRIPTION
-   Adds ScriptMethod members to System.DateTime to 
+   Adds ScriptMethod members to System.DateTime to
    provide access to Humanizer DateTime to string transform functionality.
 .EXAMPLE
     PS C:\> (Get-Date).Humanize()
@@ -306,23 +306,23 @@ function ConvertFrom-RomanNumeral {
         [Parameter(ValueFromPipeline=$true)]
         [string]$RomanNumeral
     )
-    
+
     Process {
-        [Humanizer.RomanNumeralExtensions]::FromRoman($RomanNumeral) 
+        [Humanizer.RomanNumeralExtensions]::FromRoman($RomanNumeral)
     }
 }
 
 function ConvertTo-Casing {
-    param(        
+    param(
         [Parameter(ValueFromPipeline=$true)]
         [string]$Target,
         [ValidateSet("Title","AllCaps","LowerCase","Sentence")]
         $Case="Title"
     )
-    
+
     Process {
         [Humanizer.CasingExtensions]::ApplyCase($Target, $Case)
-        
+
     }
 }
 
@@ -331,29 +331,29 @@ function ConvertTo-HumanDate {
         [Parameter(ValueFromPipeline=$true)]
         [datetime]$Date=(Get-Date)
     )
-    
+
     Process {
         [Humanizer.DateHumanizeExtensions]::Humanize( $Date , $false )
     }
 }
 
 function ConvertTo-Ordinal {
-    param(        
+    param(
         [Parameter(ValueFromPipeline=$true)]
         [int]$Target
     )
-    
+
     Process {
         [Humanizer.OrdinalizeExtensions]::Ordinalize($Target)
     }
 }
 
 function ConvertTo-OrdinalWords {
-    param(        
+    param(
         [Parameter(ValueFromPipeline=$true)]
         [int]$Target
     )
-    
+
     Process {
         [Humanizer.NumberToWordsExtension]::ToOrdinalWords($Target)
     }
@@ -380,7 +380,7 @@ function ConvertTo-Quantity {
         [ValidateSet("None","Numeric","Words")]
         $showQuantityAs="Numeric"
     )
-    
+
     Process {
         [Humanizer.ToQuantityExtensions]::ToQuantity($string, $quantity, $showQuantityAs)
     }
@@ -392,9 +392,9 @@ function ConvertTo-RomanNumeral {
         [Parameter(ValueFromPipeline=$true)]
         [int]$Number
     )
-    
+
     Process {
-        [Humanizer.RomanNumeralExtensions]::ToRoman($Number) 
+        [Humanizer.RomanNumeralExtensions]::ToRoman($Number)
     }
 }
 
@@ -414,13 +414,13 @@ function ConvertTo-Words {
         [Parameter(ValueFromPipeline=$true)]
         [int]$number
     )
-    
+
     Process {
         [Humanizer.NumberToWordsExtension]::ToWords($number)
     }
 }
 
-function ConvertTo-HyphonatedString {
+function ConvertTo-HyphenatedString {
     param(
         [Parameter(ValueFromPipeline=$true)]
         $TitleString
