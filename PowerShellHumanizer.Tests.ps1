@@ -73,7 +73,7 @@ Describe 'Type Extension Methods' {
             'string'.ToQuantity(50) | Should Be '50 strings'
         }
         It 'Should provide quantity: words' {
-            'string'.ToQuantity(50, "word") | Should Be 'word strings'
+            'string'.ToQuantity(50, "Words") | Should Be 'fifty strings'
         }
         It 'Should convert Year to roman numerals' {
             (Get-Date).Year.ToRoman | Should Be 'MMXVI'

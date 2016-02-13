@@ -49,7 +49,7 @@ function Register-HumanizerString
         -MemberName ToQuantity `
         -value { switch ($args.Count) {
                 1 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0]) }
-                2 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0], $args[1]) }
+                2 { [Humanizer.ToQuantityExtensions]::ToQuantity($this, $args[0], [Humanizer.ShowQuantityAs]::"$($args[1])") }
                 default { throw "No overload for ToQuantity takes the specified number of parameters." }
                 }} `
         -Force
