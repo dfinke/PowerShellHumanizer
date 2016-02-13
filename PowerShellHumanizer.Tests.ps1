@@ -64,7 +64,7 @@ Describe 'Type Extension Methods' {
             'then add nodes under it.'.TruncateCharacters(7, '-') | Should Be 'then a-'
         }
         It 'Should Dehumanize' {
-            'then add nodes under it.'.Dehumanize | Should Be 'ThenAddNodesUnderIt.'
+            'then add nodes under it.'.Dehumanize | Should Be 'ThenAddNodesUnderIt'
         }
         It 'Should provide quanity: # word' {
             'string'.ToQuantity(50) | Should Be '50 strings'
@@ -72,7 +72,22 @@ Describe 'Type Extension Methods' {
         It 'Should provide quantity: words' {
             'string'.ToQuantity(50, "word") | Should Be 'fifty strings'
         }
+        It 'Should convert Year to roman numerals' {
+            (Get-Date).Year.ToRoman | Should Be 'MMXIV'
+        }
     }
+    Context 'Integers' {
+        It 'Should ordanalize' {
+            (3).Ordinalize | Should Be '3rd'
+        }
+        It 'Should convert to word' {
+            (3).ToWords | Should Be 'three'
+        }
+        It 'Should do math in weeks' {
+            (Get-Date 2/13/2016) + (3).Weeks -eq (Get-Date 3/5/2016) | Should Be $true
+        }
+    }
+
 }
 
 Describe 'Custom Formats' {
