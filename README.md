@@ -153,7 +153,7 @@ one year ago
 10 months ago              
 ```
 
-### Custom TimeSpane Formats
+### Custom TimeSpan Formats
 ```powershell
 PS C:\> measure-command { 1..15000000}
 
