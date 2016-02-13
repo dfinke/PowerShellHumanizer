@@ -29,13 +29,15 @@ Describe 'Functions' {
     }
     Context 'Hyphenate' {
         It 'Should convert to a hyphenated string' {
-            "Continuing To Make Powershell A Bit More Human" | ConvertTo-HyphenatedString | Should Be 'continuing-to-make-powershell-a-bit-more-human'
+            "Continuing To Make Powershell A Bit More Human" | 
+                ConvertTo-HyphenatedString | 
+                Should Be 'continuing-to-make-powershell-a-bit-more-human'
         }
 
     }
     Context 'Number to ordinal words' {
         It 'Should convert to words' {
-            ConvertTo-OrdinalWords 121 | Should Be 'hundred and twenty first'
+            ConvertTo-OrdinalWords 121 | Should Be 'hundred and twenty-first'
         }
         It 'Should convert a range to words' {
             $output = 120..122 | ConvertTo-OrdinalWords
@@ -70,10 +72,10 @@ Describe 'Type Extension Methods' {
             'string'.ToQuantity(50) | Should Be '50 strings'
         }
         It 'Should provide quantity: words' {
-            'string'.ToQuantity(50, "word") | Should Be 'fifty strings'
+            'string'.ToQuantity(50, "word") | Should Be 'word strings'
         }
         It 'Should convert Year to roman numerals' {
-            (Get-Date).Year.ToRoman | Should Be 'MMXIV'
+            (Get-Date).Year.ToRoman | Should Be 'MMXVI'
         }
     }
     Context 'Integers' {

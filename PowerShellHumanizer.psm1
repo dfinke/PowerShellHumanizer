@@ -101,21 +101,38 @@ function Register-HumanizerString
         -MemberType ScriptMethod `
         -MemberName TruncateCharacters `
         -value { switch ($args.Count) {
-                1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0]) }
-                2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1]) }
+                1 { 
+                    [Humanizer.TruncateExtensions]::Truncate($this, [int]$args[0]) 
+                }
+
+                2 { 
+                    [Humanizer.TruncateExtensions]::Truncate($this, [int]$args[0], [string]$args[1]) 
+                }
+
                 default { throw "No overload for Truncate takes the specified number of parameters." }
-                }} `
-        -Force
+                }
+         } -Force
 
     Update-TypeData -TypeName System.String `
         -MemberType ScriptMethod `
         -MemberName TruncateWords `
-        -value { switch ($args.Count) {
-                1 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [Humanizer.Truncator]::FixedNumberOfWords) }
-                2 { [Humanizer.Truncator]::Truncate($this, [int]$args[0], [string]$args[1], [Humanizer.Truncator]::FixedNumberOfWords) }
+        -value { 
+            switch ($args.Count) {
+                0 {"WTF"}
+                1 {
+                    $length=[int]$args[0]                    
+                    [Humanizer.TruncateExtensions]::Truncate($this, $length, [Humanizer.Truncator]::FixedNumberOfWords)                     
+                }
+
+                2 { 
+                    $length=[int]$args[0]
+                    $character = [string]$args[1]
+                    [Humanizer.TruncateExtensions]::Truncate($this, $length, $character, [Humanizer.Truncator]::FixedNumberOfCharacters) 
+                }
+            
                 default { throw "No overload for Truncate takes the specified number of parameters." }
-                }} `
-        -Force
+            }
+          } -Force
  }
 
 <#
