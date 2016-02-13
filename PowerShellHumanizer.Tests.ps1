@@ -1,4 +1,4 @@
-﻿$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.ps1', '.psd1'
 ipmo "$here\$sut" -Force
 
@@ -29,8 +29,9 @@ Describe 'Functions' {
     }
     Context 'Hyphenate' {
         It 'Should convert to a hyphenated string' {
-            "Continuing To Make Powershell A Bit More Human" | 
-                ConvertTo-HyphenatedString | 
+
+            "Continuing To Make Powershell A Bit More Human" |
+                ConvertTo-HyphenatedString |
                 Should Be 'continuing-to-make-powershell-a-bit-more-human'
         }
 
