@@ -58,10 +58,10 @@ Describe 'Type Extension Methods' {
             'FromTitleCase'.Underscore | Should Be 'from_title_case'
         }
         It 'Should truncate words' {
-            'then add nodes under it.'.TruncateWords(3) | Should be 'then add nodesâ€¦'
+            'then add nodes under it.'.TruncateWords(3) | Should be 'then add nodes…'
         }
         It 'Should truncate characters' {
-            'then add nodes under it.'.TruncateCharacters(3) | Should Be 'thâ€¦'
+            'then add nodes under it.'.TruncateCharacters(3) | Should Be 'th…'
         }
         It 'Should truncate with optional character' {
             'then add nodes under it.'.TruncateCharacters(7, '-') | Should Be 'then a-'
