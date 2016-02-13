@@ -1,7 +1,7 @@
 $p = @{
     Name = "PowerShellHumanizer"
     NuGetApiKey = $NuGetApiKey
-    ReleaseNote = "Renamed to HyphenatedString"
+    ReleaseNote = "Updated dependency, added Pester tests and more"
 }
 
 Publish-Module @p
