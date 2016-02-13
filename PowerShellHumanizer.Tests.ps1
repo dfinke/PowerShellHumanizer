@@ -87,6 +87,21 @@ Describe 'Type Extension Methods' {
             (Get-Date 2/13/2016) + (3).Weeks -eq (Get-Date 3/5/2016) | Should Be $true
         }
     }
+    Context 'TimeSpan' {
+        $past = (Get-Date 2/13/2016).AddMinutes(-1).AddSeconds(-20)
+        $time = (Get-Date 2/13/2016) - $past
+        It 'Should simplify TimeSpan objects' {
+            $time.Humanize() | Should Be '1 minute'
+        }
+        It 'Should simplify TimeSpan objects with selectable precision' {
+            $time.Humanize(2) | Should Be '1 minute, 20 seconds'
+        }
+    }
+    Context 'DateTime' {
+        It 'Should display Now as now when UTC is false' {
+            (Get-Date).Humanize($false) | Should Be 'now'
+        }
+    }
 
 }
 
