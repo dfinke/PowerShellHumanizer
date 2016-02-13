@@ -102,11 +102,22 @@ Describe 'Type Extension Methods' {
             (Get-Date).Humanize($false) | Should Be 'now'
         }
     }
-
 }
 
 Describe 'Custom Formats' {
-
+    Context 'TimeSpan' {
+        It 'Should display 1 hour' {
+            (([TimeSpan]::new(1,0,0))|Out-String).trim() | Should Be '1 hour'
+        }
+    }
+    Context 'FileSystem' {
+        $chars = [char[]] ([char]'0'..[char]'9' + [char]'A'..[char]'Z' + [char]'a'..[char]'z')
+        $chars = $chars * 126
+        (1..(1kb/128)).foreach({-join (Get-Random $chars -Count 126) | Add-Content TestDrive:\testfile.txt })
+        It 'Should display 1 KB' {
+            ((Get-ChildItem TestDrive:\testfile.txt) | Out-String) | Should Match "1 KB testfile.txt"
+        }
+    }
 }
 
 Remove-Module PowerShellHumanizer
