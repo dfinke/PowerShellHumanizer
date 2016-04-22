@@ -11,6 +11,14 @@
                     [Humanizer.ToQuantityExtensions]::ToQuantity($this, $Count, $ShowQuantityAs)
                 </Script>
             </ScriptMethod>
+             <ScriptMethod>
+                <Name>Dehumanize</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    [Humanizer.StringDehumanizeExtensions]::Dehumanize($this)
+                </Script>
+            </ScriptMethod>           
         </Members>
     </Type>
 </Types>
