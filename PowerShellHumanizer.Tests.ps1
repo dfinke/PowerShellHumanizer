@@ -64,7 +64,7 @@ Describe 'Type Extension Methods' {
             'then add nodes under it.'.Truncate(3,"Characters") | Should Be 'th…'
         }
         It 'Should truncate with optional character' {
-            'then add nodes under it.'.Truncate(7, "Characters", '-') | Should Be 'then a-'
+            'then add nodes under it.'.Truncate(7, "Characters", '-') | Should Be 'then ad-'
         }
         It 'Should Dehumanize' {
             'then add nodes under it.'.Dehumanize | Should Be 'ThenAddNodesUnderIt'
