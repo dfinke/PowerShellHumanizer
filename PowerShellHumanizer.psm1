@@ -1,5 +1,12 @@
 Add-Type -Path "$PSScriptRoot\humanizer.dll"
 
+$Types = @("$PSScriptRoot\String.types.ps1xml", 
+    "$PSScriptRoot\Int.types.ps1xml", 
+    "$PSScriptRoot\TimeSpan.types.ps1xml",
+    "$PSScriptRoot\DateTime.types.ps1xml")
+
+Update-TypeData -PrependPath $Types
+
 # Must call Update-FormatData with -PrependPath to override built-in defined formats
 Update-FormatData -PrependPath "$PSScriptRoot\TimeSpan.format.ps1xml"
 Update-FormatData -PrependPath "$PSScriptRoot\FileInfo.format.ps1xml"
@@ -134,7 +141,4 @@ function ConvertTo-HyphenatedString {
     }
 }
 
-Register-HumanizerString
-Register-HumanizerInteger
-Register-HumanizerTimeSpan
-Register-HumanizerDateTime
+
