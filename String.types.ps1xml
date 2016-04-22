@@ -55,7 +55,15 @@
                     param()                  
                     [Humanizer.StringDehumanizeExtensions]::Dehumanize($this)
                 </Script>
-            </ScriptMethod>           
+            </ScriptMethod>    
+            <ScriptMethod>
+                <Name>Underscore</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    [Humanizer.InflectorExtensions]::Underscore($this)
+                </Script>
+            </ScriptMethod>                   
         </Members>
     </Type>
 </Types>
