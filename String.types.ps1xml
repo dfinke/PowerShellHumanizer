@@ -4,6 +4,14 @@
         <Name>System.String</Name>
         <Members>
             <ScriptMethod>
+                <Name>Humanize</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param([Humanizer.LetterCasing]$LetterCasing = [Humanizer.LetterCasing]::Title)                  
+                    [Humanizer.StringHumanizeExtensions]::Humanize($this, $LetterCasing)
+                </Script>
+            </ScriptMethod>        
+            <ScriptMethod>
                 <Name>ToQuantity</Name>
                 <Script>
                     [OutputType([System.String])]
