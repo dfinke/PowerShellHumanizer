@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>System.String</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>ToQuantity</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param([Parameter(Mandatory)][int]$Count, [Humanizer.ShowQuantityAs]$ShowQuantityAs = [Humanizer.ShowQuantityAs]::Words)                  
+                    [Humanizer.ToQuantityExtensions]::ToQuantity($this, $Count, $ShowQuantityAs)
+                </Script>
+            </ScriptMethod>
+        </Members>
+    </Type>
+</Types>
