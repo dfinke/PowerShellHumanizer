@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>System.TimeSpan</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>Humanize</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param([int]$Precision = 1)                  
+                    [Humanizer.TimeSpanHumanizeExtensions]::Humanize($this, $Precision)
+                </Script>
+            </ScriptMethod>                                                                      
+        </Members>
+    </Type>
+</Types>            
