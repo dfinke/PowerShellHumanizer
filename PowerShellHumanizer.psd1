@@ -57,7 +57,7 @@ Description = 'PowerShell Humanizer wraps Humanizer: meets all your .NET needs f
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @('String.types.ps1xml', 'Int.types.ps1xml')
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @('TimeSpan.format.ps1xml')
