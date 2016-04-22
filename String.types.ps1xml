@@ -63,7 +63,15 @@
                     param()                  
                     [Humanizer.InflectorExtensions]::Underscore($this)
                 </Script>
-            </ScriptMethod>                   
+            </ScriptMethod>  
+            <ScriptMethod>
+                <Name>FromRoman</Name>
+                <Script>
+                    [OutputType([System.Int32])]
+                    param()                  
+                    [Humanizer.RomanNumeralExtensions]::FromRoman($this)
+                </Script>
+            </ScriptMethod>                                
         </Members>
     </Type>
 </Types>
