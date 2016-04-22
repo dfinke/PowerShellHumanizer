@@ -1,12 +1,8 @@
 Add-Type -Path "$PSScriptRoot\humanizer.dll"
 
-# Must call Update-FormatData with -PrepentPath to override built-in defined formats
+# Must call Update-FormatData with -PrependPath to override built-in defined formats
 Update-FormatData -PrependPath "$PSScriptRoot\TimeSpan.format.ps1xml"
 Update-FormatData -PrependPath "$PSScriptRoot\FileInfo.format.ps1xml"
-
-
-
-
 
 function ConvertFrom-RomanNumeral {
     param(
