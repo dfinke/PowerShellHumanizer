@@ -12,13 +12,34 @@
                 </Script>
             </ScriptMethod>   
             <ScriptMethod>
+                <Name>Transform</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param(
+                        [Parameter(Mandatory)]
+                        [ValidateSet("SentenceCase", "TitleCase", "LowerCase", "UpperCase")]
+                        [string]$Case
+                    )
+                    $ToCase = [Humanizer.To]::$Case
+                    [Humanizer.To]::Transform($this, $ToCase)
+                </Script>
+            </ScriptMethod>            
+            <ScriptMethod>
                 <Name>ToSentenceCase</Name>
                 <Script>
                     [OutputType([System.String])]
                     param()                  
-                    [Humanizer.To]::SentenceCase.Transform($this)
+                    $this.Transform("SentenceCase")
                 </Script>
             </ScriptMethod>
+            <ScriptMethod>
+                <Name>ToTitleCase</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    $this.Transform("TitleCase")
+                </Script>
+            </ScriptMethod>            
             <ScriptMethod>
                 <Name>ToQuantity</Name>
                 <Script>
