@@ -81,11 +81,11 @@
                         [int]$Length,                       
                         
                         [ValidateSet("Characters","Words")]
-                        [string]$Truncator = "Characters",
+                        [string]$Truncator = "Characters",                                              
                         
-                        [Humanizer.TruncateFrom]$From = "Right",
+                        [string]$TruncationString,
                         
-                        [string]$TruncationString
+                        [Humanizer.TruncateFrom]$From = "Right"
                     )                 
                     
                     $truncatorString = "FixedNumberOf$Truncator"
