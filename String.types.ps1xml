@@ -71,7 +71,35 @@
                     param()                  
                     [Humanizer.RomanNumeralExtensions]::FromRoman($this)
                 </Script>
-            </ScriptMethod>                                
+            </ScriptMethod>    
+            <ScriptMethod>
+                <Name>Truncate</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param(
+                        [Parameter(Mandatory)]
+                        [int]$Length,                       
+                        
+                        [ValidateSet("Characters","Words")]
+                        [string]$Truncator = "Characters",
+                        
+                        [Humanizer.TruncateFrom]$From = "Right",
+                        
+                        [string]$TruncationString
+                    )                 
+                    
+                    $truncatorString = "FixedNumberOf$Truncator"
+                    $truncatorObj = [Humanizer.Truncator]::$truncatorString
+                    
+                    if ($TruncationString) {
+                        [Humanizer.TruncateExtensions]::Truncate($this, $Length, $TruncationString, $truncatorObj, $From)
+                    }
+                    else
+                    {
+                        [Humanizer.TruncateExtensions]::Truncate($this, $Length, $truncatorObj, $From)
+                    }
+                </Script>
+            </ScriptMethod>                                          
         </Members>
     </Type>
 </Types>
