@@ -68,10 +68,10 @@ hundred and thirtieth
 
 ### String Extension Methods
 ```powershell
-PS C:\> 'then add nodes under it.'.ToTitleCase
+PS C:\> 'then add nodes under it.'.ToTitleCase()
 Then Add Nodes Under It.
 
-PS C:\> 'FromTitleCase'.Underscore
+PS C:\> 'FromTitleCase'.Underscore()
 from_title_case
 
 PS C:\> 'then add nodes under it.'.TruncateWords(3)
