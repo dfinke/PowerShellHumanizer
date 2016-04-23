@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>System.String</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>Humanize</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param([Humanizer.LetterCasing]$LetterCasing = [Humanizer.LetterCasing]::Title)                  
+                    [Humanizer.StringHumanizeExtensions]::Humanize($this, $LetterCasing)
+                </Script>
+            </ScriptMethod>   
+            <ScriptMethod>
+                <Name>Transform</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param(
+                        [Parameter(Mandatory)]
+                        [ValidateSet("SentenceCase", "TitleCase", "LowerCase", "UpperCase")]
+                        [string]$Case
+                    )
+                    $ToCase = [Humanizer.To]::$Case
+                    [Humanizer.To]::Transform($this, $ToCase)
+                </Script>
+            </ScriptMethod>            
+            <ScriptMethod>
+                <Name>ToSentenceCase</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    [Humanizer.To]::Transform($this, [Humanizer.To]::SentenceCase)
+                </Script>
+            </ScriptMethod>
+            <ScriptMethod>
+                <Name>ToTitleCase</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    [Humanizer.To]::Transform($this, [Humanizer.To]::TitleCase)
+                </Script>
+            </ScriptMethod>            
+            <ScriptMethod>
+                <Name>ToQuantity</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param([Parameter(Mandatory)][int]$Count, [Humanizer.ShowQuantityAs]$ShowQuantityAs = [Humanizer.ShowQuantityAs]::Numeric)                  
+                    [Humanizer.ToQuantityExtensions]::ToQuantity($this, $Count, $ShowQuantityAs)
+                </Script>
+            </ScriptMethod>
+             <ScriptMethod>
+                <Name>Dehumanize</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    [Humanizer.StringDehumanizeExtensions]::Dehumanize($this)
+                </Script>
+            </ScriptMethod>    
+            <ScriptMethod>
+                <Name>Underscore</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param()                  
+                    [Humanizer.InflectorExtensions]::Underscore($this)
+                </Script>
+            </ScriptMethod>  
+            <ScriptMethod>
+                <Name>FromRoman</Name>
+                <Script>
+                    [OutputType([System.Int32])]
+                    param()                  
+                    [Humanizer.RomanNumeralExtensions]::FromRoman($this)
+                </Script>
+            </ScriptMethod>    
+            <ScriptMethod>
+                <Name>Truncate</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param(
+                        [Parameter(Mandatory)]
+                        [int]$Length,                       
+                        
+                        [ValidateSet("Characters","Words")]
+                        [string]$Truncator = "Characters",                                              
+                        
+                        [string]$TruncationString,
+                        
+                        [Humanizer.TruncateFrom]$From = "Right"
+                    )                 
+                    
+                    $truncatorString = "FixedNumberOf$Truncator"
+                    $truncatorObj = [Humanizer.Truncator]::$truncatorString
+                    
+                    if ($TruncationString) {
+                        [Humanizer.TruncateExtensions]::Truncate($this, $Length, $TruncationString, $truncatorObj, $From)
+                    }
+                    else
+                    {
+                        [Humanizer.TruncateExtensions]::Truncate($this, $Length, $truncatorObj, $From)
+                    }
+                </Script>
+            </ScriptMethod>                                          
+        </Members>
+    </Type>
+</Types>

@@ -12,7 +12,7 @@
 RootModule = 'PowerShellHumanizer.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.0'
+ModuleVersion = '3.0'
 
 # ID used to uniquely identify this module
 GUID = '6dc9be51-eb93-4355-8648-0c725c0ac988'
@@ -57,7 +57,7 @@ Description = 'PowerShell Humanizer wraps Humanizer: meets all your .NET needs f
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+#TypesToProcess = @('String.types.ps1xml', 'Int.types.ps1xml','TimeSpan.types.ps1xml','DateTime.types.ps1xml')
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @('TimeSpan.format.ps1xml')

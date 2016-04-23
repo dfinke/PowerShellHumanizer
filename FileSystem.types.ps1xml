@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Types>
+  <Type>
+    <Name>System.DateTime</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>DateTime</Name>
+        <GetScriptBlock>
+          if ((&amp; { Set-StrictMode -Version 1; $this.DisplayHint }) -ieq  "Date")
+          {
+          "{0}" -f $this.ToLongDateString()
+          }
+          elseif ((&amp; { Set-StrictMode -Version 1; $this.DisplayHint }) -ieq "Time")
+          {
+          "{0}" -f  $this.ToLongTimeString()
+          }
+          else
+          {
+          "{0} {1}" -f $this.ToLongDateString(), $this.ToLongTimeString()
+          }
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>System.IO.DirectoryInfo</Name>
+    <Members>
+      <CodeProperty>
+        <Name>Mode</Name>
+        <GetCodeReference>
+          <TypeName>Microsoft.PowerShell.Commands.FileSystemProvider</TypeName>
+          <MethodName>Mode</MethodName>
+        </GetCodeReference>
+      </CodeProperty>
+      <ScriptProperty>
+        <Name>BaseName</Name>
+        <GetScriptBlock>
+          $this.Name
+        </GetScriptBlock>
+      </ScriptProperty>      
+      <MemberSet>
+        <Name>PSStandardMembers</Name>
+        <Members>
+          <NoteProperty>
+            <Name>DefaultDisplayProperty</Name>
+            <Value>Name</Value>
+          </NoteProperty>
+        </Members>
+      </MemberSet>
+    </Members>
+  </Type>
+  <Type>
+    <Name>System.IO.FileInfo</Name>
+    <Members>
+      <CodeProperty>
+        <Name>Mode</Name>
+        <GetCodeReference>
+          <TypeName>Microsoft.PowerShell.Commands.FileSystemProvider</TypeName>
+          <MethodName>Mode</MethodName>
+        </GetCodeReference>
+      </CodeProperty>
+      <ScriptProperty>
+        <Name>VersionInfo</Name>
+        <GetScriptBlock>
+          [System.Diagnostics.FileVersionInfo]::GetVersionInfo($this.FullName)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>BaseName</Name>
+        <GetScriptBlock>
+          if ($this.Extension.Length -gt 0){$this.Name.Remove($this.Name.Length - $this.Extension.Length)}else{$this.Name}
+        </GetScriptBlock>
+      </ScriptProperty>            
+      <MemberSet>
+        <Name>PSStandardMembers</Name>
+        <Members>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>LastWriteTime</Name>
+              <Name>Length</Name>
+              <Name>Name</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+    </Members>
+  </Type>
+  <Type>
+    <Name>System.Management.ManagementObject#root\cimv2\Win32_Process</Name>
+    <Members>
+      <AliasProperty>
+        <Name>ProcessName</Name>
+        <ReferencedMemberName>Name</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>Handles</Name>
+        <ReferencedMemberName>Handlecount</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>VM</Name>
+        <ReferencedMemberName>VirtualSize</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>WS</Name>
+        <ReferencedMemberName>WorkingSetSize</ReferencedMemberName>
+      </AliasProperty>
+      <ScriptProperty>
+        <Name>Path</Name>
+        <GetScriptBlock>$this.ExecutablePath</GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

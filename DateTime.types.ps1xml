@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>System.DateTime</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>Humanize</Name>
+                <Script>
+                    [OutputType([System.String])]
+                    param([bool]$UTC = $false)                  
+                    [Humanizer.DateHumanizeExtensions]::Humanize($this, $UTC)
+                </Script>
+            </ScriptMethod>                                                                      
+        </Members>
+    </Type>
+</Types>            

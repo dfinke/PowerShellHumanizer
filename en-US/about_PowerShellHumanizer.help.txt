@@ -1,0 +1,60 @@
+TOPIC
+    SampleModule 1.0.0
+
+SHORT DESCRIPTION
+    This PowerShell module wraps [Mehdi Khalili's .NET Humanizer](https://github.com/MehdiK/Humanizer).
+
+LONG DESCRIPTION
+    Humanizer meets all your .NET needs for manipulating and displaying strings, enums, 
+    dates, times, timespans, numbers and quantities [http://humanizr.net](http://humanizr.net)
+
+STRING EXTENSION METHODS
+    .Humanize()
+    .Humanize([Humanizer.LetterCasing]LetterCasing <"AllCaps","SentenceCase","TitleCase","LowerCase","UpperCase">)
+    
+    .Transform([string]Case <"SentenceCase","TitleCase","LowerCase","UpperCase">)
+    
+    .ToSentenceCase()
+    
+    .ToTitleCase()
+    
+    .ToQuantity([int]Count)
+    .ToQuantity([int]Count, [Humanizer.ShowQuantityAs]ShowQuantityAs <"Numeric","Word">)
+    
+    .Dehumanize()
+    
+    .Underscore()
+    
+    .FromRoman()
+    
+    .Truncate([int]Length)
+    .Truncate([int]Length, [string]Truncator <"Characters","Words">)
+    .Truncate([int]Length, [string]Truncator <"Characters","Words">, [string]TruncationString)
+    .Truncate([int]Length, [string]Truncator <"Characters","Words">, [string]TruncationString, 
+        [Humanizer.TruncateFrom]From <"Left","Right">)
+
+INTEGER EXTENSION METHODS
+    .Ordinalize()
+    
+    .ToWords()
+    
+    .ToRoman()
+    
+INTEGER EXTENSION PROPERTIES
+    .Weeks
+    
+    .Days
+    
+    .Hours
+    
+    .Minutes
+    
+    .Seconds
+    
+    .Milliseconds
+    
+TIMESPAN EXTENSION METHODS
+    .Humanize([int]Precision)
+    
+DATETIME EXTENSION METHODS
+    .Humanize([bool]UTC)      

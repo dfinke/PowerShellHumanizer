@@ -51,23 +51,26 @@ Describe 'Functions' {
 
 Describe 'Type Extension Methods' {
     Context 'Strings' {
+        It 'Should transform to Upper Case' {
+            'then add nodes under it.'.Transform("UpperCase") | Should Be 'THEN ADD NODES UNDER IT.'
+        }        
         It 'Should convert to Title Case' {
-            'then add nodes under it.'.ToTitleCase | Should Be 'Then Add Nodes Under It.'
+            'then add nodes under it.'.ToTitleCase() | Should Be 'Then Add Nodes Under It.'
         }
         It 'Should convert from Title Case' {
-            'FromTitleCase'.Underscore | Should Be 'from_title_case'
+            'FromTitleCase'.Underscore() | Should Be 'from_title_case'
         }
         It 'Should truncate words' {
-            'then add nodes under it.'.TruncateWords(3) | Should be 'then add nodes…'
+            'then add nodes under it.'.Truncate(3,"Words") | Should Match 'then add nodes\W$'
         }
         It 'Should truncate characters' {
-            'then add nodes under it.'.TruncateCharacters(3) | Should Be 'th…'
+            'then add nodes under it.'.Truncate(3,"Characters") | Should Match 'th\W$'
         }
         It 'Should truncate with optional character' {
-            'then add nodes under it.'.TruncateCharacters(7, '-') | Should Be 'then a-'
+            'then add nodes under it.'.Truncate(7, "Characters", '-') | Should Be 'then ad-'
         }
         It 'Should Dehumanize' {
-            'then add nodes under it.'.Dehumanize | Should Be 'ThenAddNodesUnderIt'
+            'then add nodes under it.'.Dehumanize() | Should Be 'ThenAddNodesUnderIt'
         }
         It 'Should provide quanity: # word' {
             'string'.ToQuantity(50) | Should Be '50 strings'
@@ -76,15 +79,15 @@ Describe 'Type Extension Methods' {
             'string'.ToQuantity(50, "Words") | Should Be 'fifty strings'
         }
         It 'Should convert Year to roman numerals' {
-            (Get-Date).Year.ToRoman | Should Be 'MMXVI'
+            (Get-Date).Year.ToRoman() | Should Be 'MMXVI'
         }
     }
     Context 'Integers' {
         It 'Should ordanalize' {
-            (3).Ordinalize | Should Be '3rd'
+            (3).Ordinalize() | Should Be '3rd'
         }
         It 'Should convert to word' {
-            (3).ToWords | Should Be 'three'
+            (3).ToWords() | Should Be 'three'
         }
         It 'Should do math in weeks' {
             (Get-Date 2/13/2016) + (3).Weeks -eq (Get-Date 3/5/2016) | Should Be $true
@@ -102,7 +105,10 @@ Describe 'Type Extension Methods' {
     }
     Context 'DateTime' {
         It 'Should display Now as now when UTC is false' {
-            (Get-Date).Humanize($false) | Should Be 'now'
+            (Get-Date).Humanize() | Should Be 'now'
+        }
+        It 'Should display Now as hours ago when UTC is true' {
+            (Get-Date).Humanize($true) | Should Match 'hours'
         }
     }
 }
