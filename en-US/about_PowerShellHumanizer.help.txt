@@ -30,6 +30,31 @@ STRING EXTENSION METHODS
     .Truncate([int]Length)
     .Truncate([int]Length, [string]Truncator <"Characters","Words">)
     .Truncate([int]Length, [string]Truncator <"Characters","Words">, [string]TruncationString)
-    .Truncate([int]Length, [string]Truncator <"Characters","Words">, [string]TruncationString, [Humanizer.TruncateFrom]From <"Left","Right">)
+    .Truncate([int]Length, [string]Truncator <"Characters","Words">, [string]TruncationString, 
+        [Humanizer.TruncateFrom]From <"Left","Right">)
 
+INTEGER EXTENSION METHODS
+    .Ordinalize()
     
+    .ToWords()
+    
+    .ToRoman()
+    
+INTEGER EXTENSION PROPERTIES
+    .Weeks
+    
+    .Days
+    
+    .Hours
+    
+    .Minutes
+    
+    .Seconds
+    
+    .Milliseconds
+    
+TIMESPAN EXTENSION METHODS
+    .Humanize([int]Precision)
+    
+DATETIME EXTENSION METHODS
+    .Humanize([bool]UTC)      
