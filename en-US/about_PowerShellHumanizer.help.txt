@@ -10,7 +10,7 @@ LONG DESCRIPTION
 
 STRING EXTENSION METHODS
     .Humanize()
-    .Humanize([Humanizer.LetterCasing]LetterCasing <"AllCaps","SentenceCase","TitleCase","LowerCase","UpperCase">)
+    .Humanize([Humanizer.LetterCasing]LetterCasing <"AllCaps","Sentence","Title","LowerCase">)
     
     .Transform([string]Case <"SentenceCase","TitleCase","LowerCase","UpperCase">)
     
