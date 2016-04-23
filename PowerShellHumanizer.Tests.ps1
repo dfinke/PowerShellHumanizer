@@ -51,6 +51,9 @@ Describe 'Functions' {
 
 Describe 'Type Extension Methods' {
     Context 'Strings' {
+        It 'Should transform to Upper Case' {
+            'then add nodes under it.'.Transform("UpperCase") | Should Be 'THEN ADD NODES UNDER IT.'
+        }        
         It 'Should convert to Title Case' {
             'then add nodes under it.'.ToTitleCase() | Should Be 'Then Add Nodes Under It.'
         }
@@ -102,7 +105,10 @@ Describe 'Type Extension Methods' {
     }
     Context 'DateTime' {
         It 'Should display Now as now when UTC is false' {
-            (Get-Date).Humanize($false) | Should Be 'now'
+            (Get-Date).Humanize() | Should Be 'now'
+        }
+        It 'Should display Now as hours ago when UTC is true' {
+            (Get-Date).Humanize($true) | Should Match 'hours'
         }
     }
 }
