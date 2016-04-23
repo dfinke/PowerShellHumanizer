@@ -125,10 +125,10 @@ PS C:\> ((Get-Date)-$past).Humanize(2)
 
 ### DateTime Extension Methods
 ```powershell
-PS C:\> (Get-Date).Humanize()
+PS C:\> (Get-Date).Humanize($true)
 4 hours ago
 
-PS C:\> (Get-Date).Humanize($false)
+PS C:\> (Get-Date).Humanize()
 now
 
 PS C:\> dir | select @{Label="LastModified";Expression={$_.LastWriteTime.ToUniversalTime().Humanize()}}
