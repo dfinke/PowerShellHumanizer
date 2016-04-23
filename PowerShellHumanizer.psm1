@@ -3,7 +3,8 @@ Add-Type -Path "$PSScriptRoot\humanizer.dll"
 $Types = @("$PSScriptRoot\String.types.ps1xml", 
     "$PSScriptRoot\Int.types.ps1xml", 
     "$PSScriptRoot\TimeSpan.types.ps1xml",
-    "$PSScriptRoot\DateTime.types.ps1xml")
+    "$PSScriptRoot\DateTime.types.ps1xml",
+    "$PSScriptRoot\CmdletInfo.types.ps1xml")
 
 Update-TypeData -PrependPath $Types
 

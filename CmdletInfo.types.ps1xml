@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>System.Management.Automation.CmdletInfo</Name>
+        <Members>
+           <ScriptProperty>
+                <Name>Humanized</Name>
+                <GetScriptBlock>                                        
+                    $this.Verb + " " + $this.Noun.Humanize()
+                </GetScriptBlock>
+            </ScriptProperty>                                                          
+        </Members>
+    </Type>
+    <Type>
+        <Name>System.Management.Automation.FunctionInfo</Name>
+        <Members>
+           <ScriptProperty>
+                <Name>Humanized</Name>
+                <GetScriptBlock>                                        
+                    $this.Verb + " " + $this.Noun.Humanize()
+                </GetScriptBlock>
+            </ScriptProperty>                                                          
+        </Members>
+    </Type>
+</Types>            
