@@ -137,7 +137,7 @@ function ConvertTo-HyphenatedString {
     )
 
     Process {
-        [Humanizer.InflectorExtensions]::Dasherize($TitleString.Underscore)
+        [Humanizer.InflectorExtensions]::Dasherize($TitleString.Underscore())
     }
 }
 
