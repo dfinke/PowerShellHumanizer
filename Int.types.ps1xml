@@ -62,7 +62,7 @@
                 <GetScriptBlock>                                        
                     [Humanizer.NumberToTimeSpanExtensions]::Milliseconds($this)
                 </GetScriptBlock>
-            </ScriptProperty>                                                                     
+            </ScriptProperty>                                                                             
         </Members>
     </Type>
 </Types>            

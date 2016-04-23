@@ -29,7 +29,7 @@
                 <Script>
                     [OutputType([System.String])]
                     param()                  
-                    $this.Transform("SentenceCase")
+                    [Humanizer.To]::Transform($this, [Humanizer.To]::SentenceCase)
                 </Script>
             </ScriptMethod>
             <ScriptMethod>
@@ -37,14 +37,14 @@
                 <Script>
                     [OutputType([System.String])]
                     param()                  
-                    $this.Transform("TitleCase")
+                    [Humanizer.To]::Transform($this, [Humanizer.To]::TitleCase)
                 </Script>
             </ScriptMethod>            
             <ScriptMethod>
                 <Name>ToQuantity</Name>
                 <Script>
                     [OutputType([System.String])]
-                    param([Parameter(Mandatory)][int]$Count, [Humanizer.ShowQuantityAs]$ShowQuantityAs = [Humanizer.ShowQuantityAs]::Words)                  
+                    param([Parameter(Mandatory)][int]$Count, [Humanizer.ShowQuantityAs]$ShowQuantityAs = [Humanizer.ShowQuantityAs]::Numeric)                  
                     [Humanizer.ToQuantityExtensions]::ToQuantity($this, $Count, $ShowQuantityAs)
                 </Script>
             </ScriptMethod>

@@ -52,10 +52,10 @@ Describe 'Functions' {
 Describe 'Type Extension Methods' {
     Context 'Strings' {
         It 'Should convert to Title Case' {
-            'then add nodes under it.'.ToTitleCase | Should Be 'Then Add Nodes Under It.'
+            'then add nodes under it.'.ToTitleCase() | Should Be 'Then Add Nodes Under It.'
         }
         It 'Should convert from Title Case' {
-            'FromTitleCase'.Underscore | Should Be 'from_title_case'
+            'FromTitleCase'.Underscore() | Should Be 'from_title_case'
         }
         It 'Should truncate words' {
             'then add nodes under it.'.Truncate(3,"Words") | Should Match 'then add nodes\W$'
@@ -67,7 +67,7 @@ Describe 'Type Extension Methods' {
             'then add nodes under it.'.Truncate(7, "Characters", '-') | Should Be 'then ad-'
         }
         It 'Should Dehumanize' {
-            'then add nodes under it.'.Dehumanize | Should Be 'ThenAddNodesUnderIt'
+            'then add nodes under it.'.Dehumanize() | Should Be 'ThenAddNodesUnderIt'
         }
         It 'Should provide quanity: # word' {
             'string'.ToQuantity(50) | Should Be '50 strings'
@@ -76,15 +76,15 @@ Describe 'Type Extension Methods' {
             'string'.ToQuantity(50, "Words") | Should Be 'fifty strings'
         }
         It 'Should convert Year to roman numerals' {
-            (Get-Date).Year.ToRoman | Should Be 'MMXVI'
+            (Get-Date).Year.ToRoman() | Should Be 'MMXVI'
         }
     }
     Context 'Integers' {
         It 'Should ordanalize' {
-            (3).Ordinalize | Should Be '3rd'
+            (3).Ordinalize() | Should Be '3rd'
         }
         It 'Should convert to word' {
-            (3).ToWords | Should Be 'three'
+            (3).ToWords() | Should Be 'three'
         }
         It 'Should do math in weeks' {
             (Get-Date 2/13/2016) + (3).Weeks -eq (Get-Date 3/5/2016) | Should Be $true
