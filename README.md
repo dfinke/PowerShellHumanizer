@@ -17,7 +17,7 @@ iex (new-object System.Net.WebClient).DownloadString('https://raw.github.com/dfi
 
 Check out how to call the `Humanize` capabilities.
 
-![]()
+![](https://raw.githubusercontent.com/dfinke/PowerShellHumanizer/master/Videos/Humanize.gif)
 
 Using PowerShell Humanizer
 -
