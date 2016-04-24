@@ -12,6 +12,13 @@ To install in your personal modules folder (e.g. ~\Documents\WindowsPowerShell\M
 iex (new-object System.Net.WebClient).DownloadString('https://raw.github.com/dfinke/PowerShellHumanizer/master/Install.ps1')
 ```
 
+## What's new
+4/24/2016
+
+Check out how to call the `Humanize` capabilities.
+
+![]()
+
 Using PowerShell Humanizer
 -
 ![image](https://raw.github.com/dfinke/PowerShellHumanizer/master/Videos/TryPowerShellHumanizer.gif)
