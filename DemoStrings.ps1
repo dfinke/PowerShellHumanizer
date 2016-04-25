@@ -18,7 +18,7 @@ newline
 Write-Host 'PowerShellHumanizer> ''then add nodes under it.''.Truncate(3,"Words")'
 'then add nodes under it.'.Truncate(3,"Words")
 newline
-Write-Host '''then add nodes under it.''.Truncate(3,"Characters")'
+Write-Host 'PowerShellHumanizer> ''then add nodes under it.''.Truncate(3,"Characters")'
 'then add nodes under it.'.Truncate(3,"Characters")
 newline
 Write-Host 'PowerShellHumanizer> ''then add nodes under it.''.Truncate(7, "Characters", ''-'')' 
@@ -36,3 +36,4 @@ newline
 Write-Host 'PowerShellHumanizer> (Get-Date).Year.ToRoman()'
 (Get-Date).Year.ToRoman()
 newline
+Start-Sleep -Milliseconds 900
