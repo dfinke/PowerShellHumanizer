@@ -1,6 +1,6 @@
 ﻿function global:prompt { Write-host ""; return 'PowerShellHumanizer> ' }
 
-function newline { Start-Sleep -Milliseconds 900; Write-Host ''}
+function newline { Start-Sleep -Milliseconds 2000; Write-Host ''}
 cls
 Import-Module PowerShellHumanizer
 Write-Host "`tPowerShell Humanizer Demo : Date Time Extension Methods `t" -ForegroundColor White -BackgroundColor DarkBlue
