@@ -6,10 +6,10 @@ This PowerShell module wraps [Mehdi Khalili's .NET Humanizer](https://github.com
 
 Install
 -
-To install in your personal modules folder (e.g. ~\Documents\WindowsPowerShell\Modules), run:
+To install grab it from the [Powershell Gallery](https://www.powershellgallery.com/packages/PowerShellHumanizer)
 
 ```powershell
-iex (new-object System.Net.WebClient).DownloadString('https://raw.github.com/dfinke/PowerShellHumanizer/master/Install.ps1')
+Install-Module -Name PowerShellHumanizer
 ```
 
 ## What's new
