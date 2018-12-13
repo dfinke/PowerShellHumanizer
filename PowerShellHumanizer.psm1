@@ -1,4 +1,6 @@
-Add-Type -Path "$PSScriptRoot\Humanizer.dll"
+$ModuleDll = Get-ChildItem -Path $PSScriptRoot -Include 'humanizer.dll' | ForEach-Object FullName
+
+Add-Type -Path $ModuleDll
 
 $Types = @("$PSScriptRoot\String.types.ps1xml", 
     "$PSScriptRoot\Int.types.ps1xml", 
