@@ -1,4 +1,4 @@
-Add-Type -Path "$PSScriptRoot\humanizer.dll"
+Add-Type -Path "$PSScriptRoot\Humanizer.dll"
 
 $Types = @("$PSScriptRoot\String.types.ps1xml", 
     "$PSScriptRoot\Int.types.ps1xml", 
