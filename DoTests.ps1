@@ -2,8 +2,6 @@ param(
     [Switch]$UsePSCore
 )
 
-$PSVersionTable.PSVersion
-
 function Install-PSCore {
     param(
         $pscoreVerion = '6.2.0-preview.3',
@@ -17,8 +15,10 @@ function Install-PSCore {
 
         $url = "https://github.com/PowerShell/PowerShell/releases/download/v$($pscoreVerion)/PowerShell-$($pscoreVerion)-$($os).zip"
 
+        "Downloading PS Core"
         Invoke-RestMethod $url -OutFile $outfile
 
+        "Unzipping PS Core"
         Expand-Archive -Path $outfile -DestinationPath $unZipPath -Force
 
         Remove-Item $outfile -ErrorAction SilentlyContinue
@@ -31,6 +31,8 @@ if ($UsePSCore) {
     $pwsh = Install-PSCore -os 'win-x64'
     & $pwsh
 }
+
+$PSVersionTable.PSVersion
 
 if ($null -eq (Get-Module -ListAvailable pester)) {
     Install-Module -Name Pester -Repository PSGallery -Force -Scope CurrentUser
