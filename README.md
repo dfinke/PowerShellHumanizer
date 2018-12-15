@@ -2,7 +2,9 @@
 <a href="https://dougfinke.visualstudio.com/PSHumanizer/_build/latest?definitionId=15?branchName=master"><img src="https://dougfinke.visualstudio.com/PSHumanizer/_apis/build/status/PSHumanizer-CI?branchName=master"></a>
 </p>
 
--
+
+# PowerShell Humanizer
+
 This PowerShell module wraps [Mehdi Khalili's .NET Humanizer](https://github.com/MehdiK/Humanizer).
 
 > Humanizer meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities [http://humanizr.net](http://humanizr.net)
