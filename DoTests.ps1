@@ -29,7 +29,7 @@ function Install-PSCore {
 
 if ($UsePSCore) {
     $pwsh = Install-PSCore -os 'win-x64'
-    & $pwsh
+    & $pwsh[-1]
 }
 
 $PSVersionTable.PSVersion
