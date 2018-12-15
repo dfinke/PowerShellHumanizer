@@ -9,7 +9,9 @@ jobs:
     vmImage: 'vs2017-win2016'
   steps:
   - powershell: .\DoTests.ps1
-    displayName: 'Invoke Tests'
+    displayName: 'Invoke Tests - Windows PowerShell'
+  - pwsh: .\DoTests.ps1
+    displayName: 'Invoke Tests - PowerShell Core'
 
 trigger:
   paths:
