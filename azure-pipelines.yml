@@ -11,9 +11,8 @@ jobs:
   steps:
   - powershell: .\DoTests.ps1
     displayName: 'Invoke Tests - Windows PowerShell'
-  # - script: |
-  #     pwsh -c '.\DoTests.ps1'
-  #   displayName: 'Invoke Tests - PowerShell Core'
+  - powershell: .\DoTests.ps1 -UsePSCore
+    displayName: 'Invoke Tests - PowerShell Core'
 
 trigger:
   paths:
