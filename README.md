@@ -1,4 +1,7 @@
-PowerShell Humanizer
+<p align="center">
+<a href="https://dougfinke.visualstudio.com/PSHumanizer/_build/latest?definitionId=15?branchName=master"><img src="https://dougfinke.visualstudio.com/PSHumanizer/_apis/build/status/PSHumanizer-CI?branchName=master"></a>
+</p>
+
 -
 This PowerShell module wraps [Mehdi Khalili's .NET Humanizer](https://github.com/MehdiK/Humanizer).
 
@@ -87,7 +90,7 @@ then add nodes…
 PS C:\> 'then add nodes under it.'.Truncate(3,"Words")
 then add nodes…
 
-PS C:\> 'then add nodes under it.'.Truncate(7, "Characters", '-') 
+PS C:\> 'then add nodes under it.'.Truncate(7, "Characters", '-')
 then a-
 
 PS C:\> 'then add nodes under it.'.Dehumanize()
@@ -140,14 +143,14 @@ now
 
 PS C:\> dir | select @{Label="LastModified";Expression={$_.LastWriteTime.ToUniversalTime().Humanize()}}
 
-LastModified                                                                                                                                                                                                                        
-------------                                                                                                                                                                                                                        
-7 months ago                                                                                                                                                                                                                        
-7 months ago                                                                                                                                                                                                                        
-7 months ago                                                                                                                                                                                                                        
-7 months ago                                                                                                                                                                                                                        
-one year ago                                                                                                                                                                                                                        
-10 months ago              
+LastModified
+------------
+7 months ago
+7 months ago
+7 months ago
+7 months ago
+one year ago
+10 months ago
 ```
 
 ### Custom TimeSpan Formats
@@ -160,7 +163,7 @@ PS C:\> (get-date) - (get-date "1/1/2015")
 
 57 weeks, 6 days, 20 hours
 
-PS C:\> $output = (get-date "1/1/2015") - (get-date) 
+PS C:\> $output = (get-date "1/1/2015") - (get-date)
 
 PS C:\> $output
 
