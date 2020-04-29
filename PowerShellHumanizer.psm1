@@ -1,4 +1,5 @@
 Add-Type -Path "$PSScriptRoot\Humanizer.dll"
+. $PSScriptRoot\CustomTypes.ps1
 
 $Types = @("$PSScriptRoot\String.types.ps1xml", 
     "$PSScriptRoot\Int.types.ps1xml", 
@@ -14,7 +15,7 @@ Update-FormatData -PrependPath "$PSScriptRoot\FileInfo.format.ps1xml"
 
 function ConvertFrom-RomanNumeral {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [string]$RomanNumeral
     )
 
@@ -25,10 +26,10 @@ function ConvertFrom-RomanNumeral {
 
 function ConvertTo-Casing {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [string]$Target,
-        [ValidateSet("Title","AllCaps","LowerCase","Sentence")]
-        $Case="Title"
+        [ValidateSet("Title", "AllCaps", "LowerCase", "Sentence")]
+        $Case = "Title"
     )
 
     Process {
@@ -39,8 +40,8 @@ function ConvertTo-Casing {
 
 function ConvertTo-HumanDate {
     param(
-        [Parameter(ValueFromPipeline=$true)]
-        [datetime]$Date=(Get-Date)
+        [Parameter(ValueFromPipeline = $true)]
+        [datetime]$Date = (Get-Date)
     )
 
     Process {
@@ -50,7 +51,7 @@ function ConvertTo-HumanDate {
 
 function ConvertTo-Ordinal {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [int]$Target
     )
 
@@ -61,7 +62,7 @@ function ConvertTo-Ordinal {
 
 function ConvertTo-OrdinalWords {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [int]$Target
     )
 
@@ -72,7 +73,7 @@ function ConvertTo-OrdinalWords {
 
 function ConvertTo-Plural {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         $Word
     )
 
@@ -85,11 +86,11 @@ function ConvertTo-Quantity {
     param(
         [string]$string,
 
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [int]$quantity,
 
-        [ValidateSet("None","Numeric","Words")]
-        $showQuantityAs="Numeric"
+        [ValidateSet("None", "Numeric", "Words")]
+        $showQuantityAs = "Numeric"
     )
 
     Process {
@@ -100,7 +101,7 @@ function ConvertTo-Quantity {
 
 function ConvertTo-RomanNumeral {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [int]$Number
     )
 
@@ -111,7 +112,7 @@ function ConvertTo-RomanNumeral {
 
 function ConvertTo-Singular {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         $Word
     )
 
@@ -122,7 +123,7 @@ function ConvertTo-Singular {
 
 function ConvertTo-Words {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         [int]$number
     )
 
@@ -133,7 +134,7 @@ function ConvertTo-Words {
 
 function ConvertTo-HyphenatedString {
     param(
-        [Parameter(ValueFromPipeline=$true)]
+        [Parameter(ValueFromPipeline = $true)]
         $TitleString
     )
 
