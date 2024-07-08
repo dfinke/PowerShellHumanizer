@@ -7,10 +7,24 @@
                 <Name>Humanize</Name>
                 <Script>
                     [OutputType([System.String])]
-                    param([int]$Precision = 1)                  
-                    [Humanizer.TimeSpanHumanizeExtensions]::Humanize($this, $Precision)
+                    param(
+                        [Int]$Precision = 1,
+                        [CultureInfo]$Culture = [CultureInfo]::CurrentUICulture,
+                        [Humanizer.TimeUnit]$MaxUnit = [Humanizer.TimeUnit]::Year,
+                        [String]$CollectionSeparator = ', ',
+                        [Boolean]$ToWords = $false
+                    )
+                    [Humanizer.TimeSpanHumanizeExtensions]::Humanize(
+                        $this,
+                        $Precision,
+                        $Culture,
+                        $MaxUnit,
+                        [Humanizer.TimeUnit]::Millisecond,
+                        $CollectionSeparator,
+                        $ToWords
+                    )
                 </Script>
-            </ScriptMethod>                                                                      
+            </ScriptMethod>
         </Members>
     </Type>
-</Types>            
+</Types>

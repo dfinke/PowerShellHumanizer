@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
     <SelectionSets>
         <SelectionSet>
@@ -8,7 +9,6 @@
             </Types>
         </SelectionSet>
     </SelectionSets>
-
     <!-- ################ GLOBAL CONTROL DEFINITIONS ################ -->
     <Controls>
         <Control>
@@ -22,12 +22,12 @@
                                         <CustomItem>
                                             <Text AssemblyName="System.Management.Automation" BaseName="FileSystemProviderStrings" ResourceId="DirectoryDisplayGrouping"/>
                                             <ExpressionBinding>
-                                              <ScriptBlock>
-                                                  $_.PSParentPath.Replace("Microsoft.PowerShell.Core\FileSystem::", "")                                                  
-                                              </ScriptBlock>
+                                                <ScriptBlock>
+                                                    $_.PSParentPath.Replace("Microsoft.PowerShell.Core\FileSystem::", "")
+                                                </ScriptBlock>
                                             </ExpressionBinding>
                                             <NewLine/>
-                                        </CustomItem> 
+                                        </CustomItem>
                                     </Frame>
                                 </CustomItem>
                             </CustomEntry>
@@ -35,26 +35,24 @@
             </CustomControl>
         </Control>
     </Controls>
-    
     <!-- ################ VIEW DEFINITIONS ################ -->
-
     <ViewDefinitions>
-       <View>
+        <View>
             <Name>children</Name>
             <ViewSelectedBy>
                 <SelectionSetName>FileSystemTypes</SelectionSetName>
             </ViewSelectedBy>
             <GroupBy>
-                <PropertyName>PSParentPath</PropertyName> 
-                <CustomControlName>FileSystemTypes-GroupingFormat</CustomControlName>  
+                <PropertyName>PSParentPath</PropertyName>
+                <CustomControlName>FileSystemTypes-GroupingFormat</CustomControlName>
             </GroupBy>
             <TableControl>
                 <TableHeaders>
-                   <TableColumnHeader>
-                      <Label>Mode</Label>
-                      <Width>8</Width>
-                      <Alignment>left</Alignment>
-                   </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Mode</Label>
+                        <Width>8</Width>
+                        <Alignment>Left</Alignment>
+                    </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>LastWritten</Label>
                         <Width>15</Width>
@@ -62,7 +60,7 @@
                     <TableColumnHeader>
                         <Label>Length</Label>
                         <Width>10</Width>
-                        <Alignment>right</Alignment>
+                        <Alignment>Right</Alignment>
                     </TableColumnHeader>
                     <TableColumnHeader/>
                 </TableHeaders>
@@ -80,7 +78,7 @@
                             </TableColumnItem>
                             <TableColumnItem>
                                 <ScriptBlock>
-                                    if (-not $_.PSIsContainer) { [Humanizer.ByteSizeExtensions]::bytes($_.Length).ToString(0.00)} 
+                                    if (-not $_.PSIsContainer) { [Humanizer.ByteSizeExtensions]::bytes($_.Length).ToString(0.00)}
                                 </ScriptBlock>
                             </TableColumnItem>
                             <TableColumnItem>
@@ -92,4 +90,4 @@
             </TableControl>
         </View>
     </ViewDefinitions>
-</Configuration>        
+</Configuration>

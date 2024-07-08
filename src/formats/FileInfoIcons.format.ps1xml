@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <!-- Based on the format.ps1xml file from DirColors
 https://github.com/DHowett/DirColors -->
 <Configuration>
@@ -26,7 +25,7 @@ https://github.com/DHowett/DirColors -->
                                     <Text AssemblyName="System.Management.Automation" BaseName="FileSystemProviderStrings" ResourceId="DirectoryDisplayGrouping"/>
                                     <ExpressionBinding>
                                         <ScriptBlock>
-                                                  $_.PSParentPath.Replace("Microsoft.PowerShell.Core\FileSystem::", "")
+                                            $_.PSParentPath.Replace("Microsoft.PowerShell.Core\FileSystem::", "")
                                         </ScriptBlock>
                                     </ExpressionBinding>
                                     <NewLine/>
@@ -54,17 +53,17 @@ https://github.com/DHowett/DirColors -->
                     <TableColumnHeader>
                         <Label>Mode</Label>
                         <Width>7</Width>
-                        <Alignment>left</Alignment>
+                        <Alignment>Left</Alignment>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>LastWriteTime</Label>
                         <Width>25</Width>
-                        <Alignment>right</Alignment>
+                        <Alignment>Right</Alignment>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Length</Label>
                         <Width>14</Width>
-                        <Alignment>right</Alignment>
+                        <Alignment>Right</Alignment>
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Name</Label>

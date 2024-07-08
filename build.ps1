@@ -45,11 +45,13 @@ $csproj = [System.IO.Path]::Combine($src, "dotnet", "dependencies.csproj")
 $bin = [System.IO.Path]::Combine($src, "dotnet", "bin")
 $obj = [System.IO.Path]::Combine($src, "dotnet", "obj")
 $lib = [System.IO.Path]::Combine($publish, "lib")
+$ps51 = [System.IO.Path]::Combine($src, "ps51")
 
 Write-Host "src: $src"
 Write-Host "docs: $docs"
 Write-Host "publish: $publish"
 Write-Host "lib: $lib"
+Write-Host "ps51: $ps51"
 Write-Host "dotnet: $([Environment]::Version)"
 Write-Host "ps: $($PSVersionTable.PSVersion)"
 
@@ -64,7 +66,7 @@ $manifest = @{
 
     FunctionsToExport    = @()
     ModuleVersion        = [version]::new($Major, $Minor, $Build, $Revision)
-    PowerShellVersion    = '7.4'
+    PowerShellVersion    = '5.1'
     ProjectUri           = "https://github.com/dfinke/PowerShellHumanizer"
     LicenseUri           = "https://github.com/dfinke/PowerShellHumanizer/blob/master/LICENSE.txt"
     RootModule           = "$module.psm1"
@@ -105,6 +107,9 @@ function Build {
     Get-ChildItem -Path $lib -filter "*.pdb" | Remove-Item -Force -ErrorAction SilentlyContinue
     Get-ChildItem -Path $lib -filter "System.Management.Automation.dll" | Remove-Item -Force -ErrorAction SilentlyContinue
     Get-ChildItem -Path $lib -filter "dependencies.dll" | Remove-Item -Force -ErrorAction SilentlyContinue
+    
+    # Copy PowerShell 5.1 dll's
+    Copy-Item -Path "$ps51/*.dll" -Destination "$publish/lib"
 
     Copy-Item -Path "$src/$module.psm1" -Destination $publish
     Copy-Item -Path @("$parent/README.md") -Destination $publish -ErrorAction SilentlyContinue

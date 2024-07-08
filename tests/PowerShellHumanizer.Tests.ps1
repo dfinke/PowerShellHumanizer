@@ -151,8 +151,8 @@ Describe 'Custom Formats' {
 
     Context 'FileSystem' {
         BeforeAll {
-            $listAlphaLower = 'a'..'z'
-            $listAlphaUpper = 'A'..'Z'
+            $listAlphaLower = [char[]](97..122)
+            $listAlphaUpper = [char[]](65..90)
             $listNumber = 0..9
             $charset = $listAlphaLower + $listAlphaUpper + $listNumber
 

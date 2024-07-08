@@ -1,13 +1,9 @@
 # Load  dlls
-Add-Type -Path "$PSScriptRoot/lib/Humanizer.dll"
-
-if ($PSCulture -ne 'en-US') {
-    if (Test-Path "$PSScriptRoot/lib/$PSCulture") {
-        Add-Type -Path "$PSScriptRoot/lib/$PSCulture/Humanizer.resources.dll"
-    } else {
-        Write-Warning "Humanizer doesn't currently support '$PSCulture'."
-    }
+if ($PSVersionTable.PSVersion.Major -lt 6) {
+    Add-Type -Path "$PSScriptRoot/lib/System.Buffers.4.0.2.0.dll"
+    Add-Type -Path "$PSScriptRoot/lib/System.Runtime.CompilerServices.Unsafe.4.0.4.1.dll"
 }
+Add-Type -Path "$PSScriptRoot/lib/Humanizer.dll"
 
 if (Get-Module -Name Terminal-Icons -ListAvailable -ErrorAction SilentlyContinue) {
     Update-FormatData -PrependPath "$PSSCriptRoot/formats/FileInfoIcons.format.ps1xml"

@@ -54,7 +54,7 @@ INTEGER EXTENSION PROPERTIES
     .Milliseconds
 
 TIMESPAN EXTENSION METHODS
-    .Humanize([int]Precision)
+    .Humanize([int]Precision, [CultureInfo]Culture, [Humanizer.TimeUnit]MaxUnit, [string]CollectionSeparator, [bool]ToWords)
 
 DATETIME EXTENSION METHODS
     .Humanize([bool]UTC)

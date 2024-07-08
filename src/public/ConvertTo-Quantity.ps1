@@ -26,10 +26,10 @@ function ConvertTo-Quantity {
     [CmdletBinding()]
     [OutputType('string')]
     param(
-        [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
+        [Parameter(Mandatory, Position = 0)]
         [string]$String,
 
-        [Parameter(Mandatory, Position = 1)]
+        [Parameter(Mandatory, Position = 1, ValueFromPipeline)]
         [Alias('Count')]
         [int]$Quantity,
 
