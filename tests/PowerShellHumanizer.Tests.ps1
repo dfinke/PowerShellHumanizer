@@ -151,9 +151,10 @@ Describe 'Custom Formats' {
 
     Context 'FileSystem' {
         BeforeAll {
-            $listAlphaLower = 'a'..'z'
-            $listAlphaUpper = 'A'..'Z'
-            $listNumber = 0..9
+
+            $listAlphaLower = for ($i = 97; $i -le 122 ; $i++) { [char]$i }
+            $listAlphaUpper = for ($i = 65; $i -le 90 ; $i++) { [char]$i }
+            $listNumber = for ($i = 0; $i -le 9 ; $i++) { $i }
             $charset = $listAlphaLower + $listAlphaUpper + $listNumber
 
             $content = (1..(1kb)).ForEach({ Get-Random $charset })
