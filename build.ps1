@@ -64,7 +64,7 @@ $manifest = @{
 
     FunctionsToExport    = @()
     ModuleVersion        = [version]::new($Major, $Minor, $Build, $Revision)
-    PowerShellVersion    = '7.4'
+    PowerShellVersion    = '5.1'
     ProjectUri           = "https://github.com/dfinke/PowerShellHumanizer"
     LicenseUri           = "https://github.com/dfinke/PowerShellHumanizer/blob/master/LICENSE.txt"
     RootModule           = "$module.psm1"
