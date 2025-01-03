@@ -1,5 +1,7 @@
 # Load  dlls
-Add-Type -Path "$PSScriptRoot/lib/Humanizer.dll"
+if ($PSVersionTable.PSVersion -lt [version]"7.4.6") {
+    Add-Type -Path "$PSScriptRoot/lib/Humanizer.dll"
+}
 
 if ($PSCulture -ne 'en-US') {
     if (Test-Path "$PSScriptRoot/lib/$PSCulture") {
