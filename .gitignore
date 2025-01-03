@@ -215,3 +215,5 @@ pip-log.txt
 .mr.developer.cfg
 InstallLocally.ps1
 CleanPSHumanizer.ps1
+
+testResults.xml
