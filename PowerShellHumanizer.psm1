@@ -142,4 +142,23 @@ function ConvertTo-HyphenatedString {
     }
 }
 
+function ConvertTo-HumanizedByteSize {
+    param(
+        [Parameter(ValueFromPipeline=$true)]
+        [long]$ByteSize,
+        
+        [string]$Format
+    )
+
+    Process {
+        $byteObject = [Humanizer.ByteSizeExtensions]::Bytes($ByteSize)
+        
+        if ($Format) {
+            [Humanizer.ByteSizeExtensions]::Humanize($byteObject, $Format)
+        } else {
+            [Humanizer.ByteSizeExtensions]::Humanize($byteObject)
+        }
+    }
+}
+
 

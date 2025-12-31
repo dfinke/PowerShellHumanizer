@@ -47,6 +47,32 @@ Describe 'Functions' {
             $output[2] | Should Be 'hundred and twenty-second'
         }
     }
+    Context 'ByteSize Humanization' {
+        It 'Should humanize bytes' {
+            ConvertTo-HumanizedByteSize 500 | Should Be '500 B'
+        }
+        It 'Should humanize kilobytes' {
+            ConvertTo-HumanizedByteSize 1024 | Should Be '1 KB'
+        }
+        It 'Should humanize megabytes' {
+            ConvertTo-HumanizedByteSize 1048576 | Should Be '1 MB'
+        }
+        It 'Should humanize gigabytes' {
+            ConvertTo-HumanizedByteSize 1073741824 | Should Be '1 GB'
+        }
+        It 'Should humanize with decimal values' {
+            ConvertTo-HumanizedByteSize 1536 | Should Be '1.5 KB'
+        }
+        It 'Should accept format parameter' {
+            ConvertTo-HumanizedByteSize 1536 -Format '#' | Should Be '2 KB'
+        }
+        It 'Should work with pipeline' {
+            $output = 1024, 2048, 3072 | ConvertTo-HumanizedByteSize
+            $output[0] | Should Be '1 KB'
+            $output[1] | Should Be '2 KB'
+            $output[2] | Should Be '3 KB'
+        }
+    }
 }
 
 Describe 'Type Extension Methods' {
