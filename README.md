@@ -59,6 +59,26 @@ PS C:\> "Continuing To Make Powershell A Bit More Human" | ConvertTo-HyphenatedS
 continuing-to-make-powershell-a-bit-more-human
 ```
 
+### ByteSize Humanization
+```powershell
+PS C:\> ConvertTo-HumanizedByteSize 1024
+1 KB
+
+PS C:\> ConvertTo-HumanizedByteSize 1048576
+1 MB
+
+PS C:\> 1536 | ConvertTo-HumanizedByteSize
+1.5 KB
+
+PS C:\> ConvertTo-HumanizedByteSize 1536 -Format '#'
+2 KB
+
+PS C:\> 1024, 2048, 3072 | ConvertTo-HumanizedByteSize
+1 KB
+2 KB
+3 KB
+```
+
 ### Number to ordinal words
 ```powershell
 PS C:\> ConvertTo-OrdinalWords 121
